@@ -1,6 +1,6 @@
 <template>
     <header class="container">
-        <Landing v-if="components.Landing" @action="buttonAction" :client="client" :Sdk="Sdk" :nodetype="nodetype">{NFT Flush}</Landing>
+        <Landing v-if="components.Landing" @action="buttonAction" :client="client" :Sdk="Sdk" :nodetype="nodetype">{MultiSig Landing}</Landing>
     </header>
 
     <main class="container flex-shrink-0 mb-4">
@@ -170,7 +170,7 @@
                     }))
                     self.ping()
 
-                    console.log('NFT Flush sockets connected! :)')
+                    console.log('MultiSig sockets connected! :)')
                 }
                 this.socket.onmessage = async function (message) {
                     if (self.timeout_socket != null) {
