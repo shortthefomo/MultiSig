@@ -39,7 +39,7 @@
             this.hasSignerList = await this.signerList()
             console.log('hasSignerList', this.hasSignerList)
             if (this.hasSignerList) {
-                console.log('signerLists', this.$store.getters.getSignerList)
+                console.log('signerLists', this.$store.getters.getSignerLists)
             }
 
             await this.accountInfo()
@@ -54,8 +54,8 @@
             account() {
                 return this.$store.getters.getAccount
             },
-            signer_list() {
-                return this.$store.getters.getSignerList
+            signer_lists() {
+                return this.$store.getters.getSignerLists
             }
         },
         watch: {

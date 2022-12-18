@@ -43,7 +43,7 @@ export const AppStore = {
             //if (!('SignerListID' in data)) { return }
             console.log('SIGNER_LIST', data)
             state.signer_lists[data.SignerListID] = data
-            console.log('state.signer_list', state.signer_list)
+            console.log('state.signer_list', state.signer_lists)
         },
         USER_TOKEN(state, user_token) {
             state.user_token = user_token
