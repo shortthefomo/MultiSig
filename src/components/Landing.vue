@@ -1,8 +1,7 @@
 <template>
     <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">
-            <img class="bog-roll" src="/e.png">
-            <div class="col-md-8 fs-4">
+            <div class="col-md-8 fs-4">                
                 <p class="text-muted text-end fs-6">by three</p>
             </div>
             <div class="col-md-12 fs-4">
