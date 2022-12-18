@@ -47,6 +47,7 @@
             }
         },
         async mounted() {
+            console.log('app key', import.meta.env.VITE_APP_KEY)
             if (this.components.Landing) { return }
             // await this.jwtFlow()
             this.components.Landing = true
