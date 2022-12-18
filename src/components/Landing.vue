@@ -6,7 +6,7 @@
             </div>  
         </div>
     </div>
-    <div class="col-md-12 fs-4">
+    <div class="col-md-12 text-white">
         <div v-for="signer_list in signer_lists">
             <h2>SignerList {{signer_list.SignerListID}}</h2>
 
