@@ -1,6 +1,6 @@
 <template>
     <header class="container">
-        <Landing v-if="components.Landing" @action="buttonAction" :client="client" :Sdk="Sdk" :nodetype="nodetype">{MultiSig Landing}</Landing>
+        <Landing v-if="components.Landing" :client="client" :Sdk="Sdk" :nodetype="nodetype">{MultiSig Landing}</Landing>
     </header>
 
     <main class="container flex-shrink-0 mb-4">
