@@ -202,4 +202,10 @@
         background-color: #00e56a;
         color: #ffffff;
     }
+
+    .open-sign {
+        background: url('/public/apple-touch-icon.png');
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+    }
 </style>
