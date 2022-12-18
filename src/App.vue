@@ -7,8 +7,8 @@
     </main>
 
     <footer class="container bg-dark footer position-absolute bottom-0 start-50 translate-middle-x text-center">
-        <button @click="openSign" class="btn btn-default mb-4" role="button" id="open-sign">
-            <img src="/apple-touch-icon.png" class="border p-2 border-3 rounded-3" alt="open sign" width="60" />
+        <button @click="openSign" class="btn btn-default mt-2 mb-4" role="button" id="open-sign">
+            <img src="/apple-touch-icon.png" class="border p-2 border-1 rounded-3" alt="open sign" width="60" />
         </button>
     </footer>
 </template>
