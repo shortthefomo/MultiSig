@@ -5,6 +5,9 @@
             <div class="col-md-8 fs-4">
                 <p class="text-muted text-end fs-6">by three</p>
             </div>
+            <div class="col-md-12 fs-4">
+                <a class="btn btn-yellow m-2" @click="openSign" role="button" id="open-sign">open sign</a>
+            </div>
         </div>
     </div>
 
@@ -34,9 +37,10 @@
 </template>
 
 <script>
-    const xapp = window.xAppSdk
     import { flagNames } from 'flagnames'
     import { Buffer } from 'buffer'
+
+    const xapp = window.xAppSdk
 
     export default {
         name: 'Landing',
@@ -79,6 +83,14 @@
             }
         },
         methods: {
+            async openSign() {
+                xapp.scanQr()
+                    .then(d => {
+                        // d (returned value) can be Error or return data:
+                        console.log('scanQr response:', d instanceof Error ? d.message : d)
+                    })
+                    .catch(e => console.log('Error:', e.message))
+            },
             async accountInfo() {
                 const payload = {
                     'id': 1,
