@@ -4,7 +4,7 @@
             <p class="h1 text-center">{{ledger}}</p>
             <p class="p-2 mb-2 bg-warning"><small>{{account}}</small></p>
             <div class="col-md-8 fs-4">                
-                <p class="text-muted text-end fs-6"><span class="fancy-font">Multisign</span> by three</p>
+                <p class="text-muted text-end fs-6"><span class="fancy-font">multisign</span>  by three</p>
             </div>  
         </div>
     </div>
