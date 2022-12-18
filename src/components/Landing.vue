@@ -15,7 +15,7 @@
 
     <footer>
         <p class="fs-6">XRPL ledger: {{ledger}}</p>
-        <p class="bg-warning">{{account}}</p>
+        <p class="p-3 mb-2 bg-dark text-white">{{account}}</p>
     </footer>
 </template>
 
