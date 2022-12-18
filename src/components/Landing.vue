@@ -12,7 +12,7 @@
             <div v-for="signer_entry in signer_list.SignerEntries">
                 <sup><small class="badge rounded-pill bg-danger me-1 position-absolute top-1 start-0">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
                 <div class="p-3 mb-2 text-white bg-dark">
-                    {{signer_entry.SignerEntry.Account}}
+                    <small>{{signer_entry.SignerEntry.Account}}</small>
                 </div>
             </div>
             <h4>Quorum: <small>{{signer_list.SignerQuorum}}</small></h4>
@@ -20,7 +20,7 @@
     </div>
     <footer>
         <p class="h1 text-center">{{ledger}}</p>
-        <p class="p-3 mb-2 bg-dark text-white">{{account}}</p>
+        <p class="p-3 mb-2 bg-warning text-white">{{account}}</p>
     </footer>
 </template>
 
