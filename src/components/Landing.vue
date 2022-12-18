@@ -39,7 +39,7 @@
             this.hasSignerList = await this.signerList()
             console.log('hasSignerList', this.hasSignerList)
             if (this.hasSignerList) {
-                console.log('signerList', this.$store.getters.getSignerList)
+                console.log('signerLists', this.$store.getters.getSignerList)
             }
 
             await this.accountInfo()
@@ -93,6 +93,7 @@
                 for (let index = 0; index < res.account_objects.length; index++) {
                     const element = res.account_objects[index]
                     if (element.LedgerEntryType === 'SignerList') {
+                        console.log('setting SignerList', element)
                         this.$store.dispatch('setSignerList', element)
                         return true
                     }
