@@ -38,7 +38,12 @@
             
         },
         computed: {
-            
+            ledger() {
+                return this.$store.getters.getLedger
+            },
+            account() {
+                return this.$store.getters.getAccount
+            },
         },
         watch: {
             async account() {
