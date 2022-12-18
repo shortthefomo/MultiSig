@@ -8,6 +8,8 @@ export const AppStore = {
         },
         account: '',
         user_token: '',
+        signer_list: [],
+
         ledger: 0
     }),
     actions: {
@@ -20,6 +22,9 @@ export const AppStore = {
         setAccount({commit}, account) {
             commit('ACCOUNT', account)
         },
+        setSignerList({commit}, account) {
+            commit('SIGNER_LIST', account)
+        },
         setLedger({commit}, ledger) {
             commit('LEDGER', ledger)
         }
@@ -30,6 +35,9 @@ export const AppStore = {
         },
         ACCOUNT(state, account) {
             state.account = account
+        },
+        SIGNER_LIST(state, signer_list) {
+            state.signer_list = signer_list
         },
         USER_TOKEN(state, user_token) {
             state.user_token = user_token
@@ -50,6 +58,9 @@ export const AppStore = {
         },
         getAccount: state => {
             return state.account
+        },
+        getSignerList: state => {
+            return state.signer_list
         },
         getLedger: state => {
             return state.ledger

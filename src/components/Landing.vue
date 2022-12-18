@@ -28,7 +28,7 @@
         props: ['client', 'Sdk', 'nodetype'],
         data() {
             return {
-                hasMultisig: false,
+                hasSignerList: false,
                 isLoading: true,
                 selectedRows: [],
                 ascending: false
@@ -36,8 +36,12 @@
         },
         async mounted() {
             console.log('landing mounted...')
-            this.hasMultisig = await this.checkSignerList()
-            console.log('hasMultisig', this.hasMultisig)
+            this.hasSignerList = await this.checkSignerList()
+            console.log('hasSignerList', this.hasSignerList)
+            if (this.hasSignerList) {
+                console.log('signerList', this.$store.getters.getSignerList)
+            }
+            
             this.isLoading = false
         },
         computed: {
@@ -47,6 +51,9 @@
             account() {
                 return this.$store.getters.getAccount
             },
+            signer_list() {
+                return this.$store.getters.getSignerList
+            }
         },
         watch: {
             async account() {
@@ -72,6 +79,7 @@
                 for (let index = 0; index < res.account_objects.length; index++) {
                     const element = res.account_objects[index]
                     if (element.LedgerEntryType === 'SignerList') {
+                        this.$store.dispatch('setSignerList', element)
                         return true
                     }
                 }
