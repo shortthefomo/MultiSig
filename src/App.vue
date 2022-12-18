@@ -238,6 +238,7 @@
     }
 
     .footer {
-        background: linear-gradient(180deg, rgba(255,158,22,1) 0%, rgba(255,203,0,1) 100%);
+        background: rgb(240,157,106);
+        background: linear-gradient(180deg, rgba(240,157,106,1) 0%, rgba(246,215,156,1) 100%);
     }
 </style>
