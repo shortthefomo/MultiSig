@@ -10,8 +10,8 @@
         <div v-for="signer_list in signer_lists">
             <h2>SignerList {{signer_list.SignerListID}}</h2>
 
+            <sup><small class="badge rounded-pill bg-danger me-1">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
             <div class="alert alert-dark" role="alert" v-for="signer_entry in signer_list.SignerEntries">
-                <sup><small class="badge rounded-pill bg-info me-1">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
                 {{signer_entry.SignerEntry.Account.substring(0, 8)}}...
             </div>
         </div>
