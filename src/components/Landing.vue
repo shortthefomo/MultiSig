@@ -15,7 +15,7 @@
                     {{signer_entry.SignerEntry.Account}}
                 </div>
             </div>
-            <p>Quorum: <small>{{signer_list.SignerQuorum}}</small></p>
+            <h4>Quorum: <small>{{signer_list.SignerQuorum}}</small></h4>
         </div>
     </div>
     <footer>
