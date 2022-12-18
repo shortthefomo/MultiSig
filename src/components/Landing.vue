@@ -29,6 +29,7 @@
         props: ['client', 'Sdk', 'nodetype'],
         data() {
             return {
+                masterKeyEnabled: true, 
                 hasSignerList: false,
                 isLoading: true,
                 selectedRows: [],
@@ -39,16 +40,9 @@
             console.log('landing mounted...')
             this.hasSignerList = await this.signerList()
             console.log('hasSignerList', this.hasSignerList)
-            if (this.hasSignerList) {
-                console.log('signerLists', this.$store.getters.getSignerLists)
-                const signer_list = this.$store.getters.getSignerLists[0]
-                console.log('flags', flagNames(signer_list.LedgerEntryType, signer_list.Flags))
-            }
 
             await this.accountInfo()
             const account_data = this.$store.getters.getAccountData
-            console.log('getAccountData', account_data)
-            console.log('flags', flagNames(account_data.LedgerEntryType, account_data.Flags))
             this.isLoading = false
         },
         computed: {
@@ -80,8 +74,13 @@
                 let res = await this.client.send(payload)
                 console.log('accountInfo', res)
                 this.$store.dispatch('setAccountData', res.account_data)
+
+                console.log('getAccountData', account_data)
+                console.log('flags', flagNames(account_data.LedgerEntryType, account_data.Flags))
+
             },
             async signerList(marker = undefined) {
+                let found = false
                 const payload = {
                     'id': 2,
                     'command': 'account_objects',
@@ -98,14 +97,24 @@
                     const element = res.account_objects[index]
                     if (element.LedgerEntryType === 'SignerList') {
                         this.$store.dispatch('setSignerList', element)
-                        return true
+                        found = true
                     }
                 }
                 if (res['marker'] !== undefined) {
                     return await this.checkSignerList(res['marker'])
                 }
-                return false
-                
+
+                if (found) {
+                    console.log('signerLists', this.$store.getters.getSignerLists)
+                    const signer_lists = this.$store.getters.getSignerLists
+                    for (let index = 0; index < signer_lists.length; index++) {
+                        const element = signer_lists[index]
+                        console.log('signer_list', element)    
+                        console.log('flags', flagNames(element.LedgerEntryType, element.Flags))
+                    }
+                }
+
+                return found
             },
             currencyHexToUTF8(code) {
 				if (code.length === 3)
