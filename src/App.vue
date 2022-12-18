@@ -32,7 +32,7 @@
         },
         data() {
             return {
-                Sdk: null,
+                Sdk: new XummSdkJwt(import.meta.env.VITE_APP_KEY),
                 nodetype: 'TESTNET',
                 socket: null,
                 timeout_socket: null,
@@ -50,8 +50,6 @@
             if (this.components.Landing) { return }
             // await this.jwtFlow()
             this.components.Landing = true
-            console.log('xxx', import.meta.env.VITE_APP_KEY)
-            this.Sdk = new XummSdkJwt(import.meta.env.VITE_APP_KEY)
         },
         methods: {
 
