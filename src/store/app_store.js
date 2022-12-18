@@ -40,6 +40,7 @@ export const AppStore = {
             state.account = account
         },
         SIGNER_LIST(state, data) {
+            if (!('SignerListID' in data)) { return }
             state.signer_lists[data.SignerListID] = data
         },
         USER_TOKEN(state, user_token) {
@@ -53,31 +54,31 @@ export const AppStore = {
         }
     },
     getters: {
-        getVersion: state => {
+        getVersion: (state) => {
             return state.version
         },
-        getXummTokenData: state => {
+        getXummTokenData: (state) => {
             return state.xumm.tokenData
         },
-        getUserToken: state => {
+        getUserToken: (state) => {
             return state.user_token
         },
-        getAccount: state => {
+        getAccount: (state) => {
             return state.account
         },
-        getSignerLists: state => {
+        getSignerLists: (state) => {
             return state.signer_lists
         },
-        getSignerList: state => (key) => {
+        getSignerList: (state) => (key) => {
             if (key in state.signer_lists) {
                 return state.signer_lists[key]
             }
             return []
         },
-        getLedger: state => {
+        getLedger: (state) => {
             return state.ledger
         },
-        getAccountData: state => {
+        getAccountData: (state) => {
             return state.account_data
         }
     }
