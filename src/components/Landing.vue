@@ -70,7 +70,7 @@
                 let res = await this.client.send(payload)
 
                 for (let index = 0; index < res.account_objects.length; index++) {
-                    const element = account_objects[index]
+                    const element = res.account_objects[index]
                     if (element.LedgerEntryType === 'SignerList') {
                         return true
                     }
