@@ -7,11 +7,6 @@
         </div>
     </div>
     <div class="col-md-12 fs-4">
-        <button @click="openSign" class="btn btn-default" role="button" id="open-sign">
-            <img src="/apple-touch-icon.png" class="rounded-3" alt="open sign" width="60" />
-        </button>
-    </div>
-    <div class="col-md-12 fs-4">
         <div v-for="signer_list in signer_lists">
             <h2>SignerList {{signer_list.SignerListID}}</h2>
             <table class="table">
@@ -83,14 +78,6 @@
             }
         },
         methods: {
-            async openSign() {
-                xapp.scanQr()
-                    .then(d => {
-                        // d (returned value) can be Error or return data:
-                        console.log('scanQr response:', d instanceof Error ? d.message : d)
-                    })
-                    .catch(e => console.log('Error:', e.message))
-            },
             async accountInfo() {
                 const payload = {
                     'id': 1,

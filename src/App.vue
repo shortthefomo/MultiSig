@@ -7,10 +7,9 @@
     </main>
 
     <footer class="container footer position-absolute bottom-0 start-50 translate-middle-x">
-        <div class="border-top py-3">
-            &copy; Three
-            <Refs />
-        </div>
+        <button @click="openSign" class="btn btn-default" role="button" id="open-sign">
+            <img src="/apple-touch-icon.png" class="rounded-3" alt="open sign" width="60" />
+        </button>
     </footer>
 </template>
 
@@ -52,7 +51,14 @@
             this.components.Landing = true
         },
         methods: {
-
+            async openSign() {
+                xapp.scanQr()
+                    .then(d => {
+                        // d (returned value) can be Error or return data:
+                        console.log('scanQr response:', d instanceof Error ? d.message : d)
+                    })
+                    .catch(e => console.log('Error:', e.message))
+            },
             async getStoreage() {
 			    const storageGet = await this.Sdk.storage.get()
 			    console.log('storageGet', storageGet)
