@@ -11,7 +11,7 @@
             <h2>SignerList {{signer_list.SignerListID}}</h2>
 
             <sup><small class="badge rounded-pill bg-danger me-1">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
-            <div class="alert alert-dark" role="alert" v-for="signer_entry in signer_list.SignerEntries">
+            <div class="bg-dark" v-for="signer_entry in signer_list.SignerEntries">
                 {{signer_entry.SignerEntry.Account}}
             </div>
         </div>
