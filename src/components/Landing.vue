@@ -2,7 +2,7 @@
     <div class="p-3 mb-2 bg-light rounded-3">
         <div class="container-fluid py-3">
             <p class="h1 text-center">{{ledger}}</p>
-            <p class="p-3 mb-2 bg-warning text-white">{{account}}</p>
+            <p class="p-3 mb-2 bg-warning">{{account}}</p>
             <div class="col-md-8 fs-4">                
                 <p class="text-muted text-end fs-6">by three</p>
             </div>  
