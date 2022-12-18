@@ -41,12 +41,14 @@
             console.log('hasSignerList', this.hasSignerList)
             if (this.hasSignerList) {
                 console.log('signerLists', this.$store.getters.getSignerLists)
-                console.log('flags', flagNames('SignerList', this.$store.getters.getSignerLists[0]))
+                const signer_list = this.$store.getters.getSignerLists[0]
+                console.log('flags', flagNames(signer_list.LedgerEntryType, signer_list.Flags))
             }
 
             await this.accountInfo()
-            console.log('getAccountData', this.$store.getters.getAccountData)
-            console.log('flags', flagNames('AccountRoot', this.$store.getters.getAccountData))
+            const account_data = this.$store.getters.getAccountData
+            console.log('getAccountData', account_data)
+            console.log('flags', flagNames(account_data.LedgerEntryType, account_data.Flags))
             this.isLoading = false
         },
         computed: {
