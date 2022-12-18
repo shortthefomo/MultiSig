@@ -9,7 +9,7 @@ export const AppStore = {
         account: '',
         user_token: '',
         signer_list: [],
-
+        owner_count: 0,
         ledger: 0
     }),
     actions: {
@@ -27,6 +27,9 @@ export const AppStore = {
         },
         setLedger({commit}, ledger) {
             commit('LEDGER', ledger)
+        },
+        setOwnerCount({commit}, count) {
+            commit('OWNER_COUNT', count)
         }
     },
     mutations: {
@@ -44,6 +47,9 @@ export const AppStore = {
         },
         LEDGER(state, ledger) {
             state.ledger = ledger
+        },
+        OWNER_COUNT(state, count) {
+            state.owner_count = count
         }
     },
     getters: {
@@ -64,6 +70,9 @@ export const AppStore = {
         },
         getLedger: state => {
             return state.ledger
+        },
+        getOwnerCount: state => {
+            return state.owner_count
         }
     }
 }
