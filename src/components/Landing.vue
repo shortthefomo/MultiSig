@@ -42,7 +42,7 @@
             console.log('hasSignerList', this.hasSignerList)
 
             await this.accountInfo()
-            const account_data = this.$store.getters.getAccountData
+            
             this.isLoading = false
         },
         computed: {
@@ -75,6 +75,7 @@
                 console.log('accountInfo', res)
                 this.$store.dispatch('setAccountData', res.account_data)
 
+                const account_data = this.$store.getters.getAccountData
                 console.log('getAccountData', account_data)
                 console.log('flags', flagNames(account_data.LedgerEntryType, account_data.Flags))
 
