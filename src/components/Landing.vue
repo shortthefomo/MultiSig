@@ -12,7 +12,7 @@
 
             <sup><small class="badge rounded-pill bg-danger me-1">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
             <div class="alert alert-dark" role="alert" v-for="signer_entry in signer_list.SignerEntries">
-                {{signer_entry.SignerEntry.Account.substring(0, 8)}}...
+                {{signer_entry.SignerEntry.Account}}
             </div>
         </div>
     </div>
