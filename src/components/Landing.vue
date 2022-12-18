@@ -21,6 +21,7 @@
 
 <script>
     const xapp = window.xAppSdk
+    import { flagNames } from 'flagnames'
     import { Buffer } from 'buffer'
 
     export default {
@@ -40,11 +41,12 @@
             console.log('hasSignerList', this.hasSignerList)
             if (this.hasSignerList) {
                 console.log('signerLists', this.$store.getters.getSignerLists)
+                console.log('flags', flagNames('SignerList', this.$store.getters.getSignerLists[0]))
             }
 
             await this.accountInfo()
             console.log('getAccountData', this.$store.getters.getAccountData)
-
+            console.log('flags', flagNames('AccountRoot', this.$store.getters.getAccountData))
             this.isLoading = false
         },
         computed: {
