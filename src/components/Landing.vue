@@ -14,8 +14,8 @@
     </div>
 
     <footer>
-        <p>XRPL ledger: {{ledger}}</p>
-        <p>account: {{account}}</p>
+        <p class="fs-6">XRPL ledger: {{ledger}}</p>
+        <p class="fs-6">account: {{account}}</p>
     </footer>
 </template>
 
