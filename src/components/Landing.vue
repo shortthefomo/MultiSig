@@ -2,14 +2,27 @@
     <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">
             <img class="bog-roll" src="/e.png">
-            <p class="col-md-8 fs-4">
+            <div class="col-md-8 fs-4">
                 <p class="text-muted text-end fs-6">by three</p>
-            </p>
-            <p class="col-md-12 fs-4">
-                <p class="text-center">
-                    <p>ToDO</p>
-                </p>
-            </p>
+            </div>
+            <div class="col-md-12 fs-4">
+                <div v-for="signer_list in signer_lists">
+                    <table class="table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Account</th>
+                                <th>SignerWeight</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="signer_entry in signer_list.SignerEntries">
+                                <td>{{signer_entry.Account}}</td>
+                                <td>{{signer_entry.SignerWeight}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -32,6 +45,7 @@
                 masterKeyEnabled: true, 
                 hasSignerList: false,
                 isLoading: true,
+                signerLists: [],
                 selectedRows: [],
                 ascending: false
             }
@@ -57,7 +71,7 @@
             }
         },
         watch: {
-            async account() {
+            account() {
                 if (this.$store.getters.getAccount != '') {
                     console.log('account changed', this.account)
                 }
@@ -77,8 +91,14 @@
 
                 const account_data = this.$store.getters.getAccountData
                 console.log('getAccountData', account_data)
-                console.log('flags', flagNames(account_data.LedgerEntryType, account_data.Flags))
+                const flags = flagNames(account_data.LedgerEntryType, account_data.Flags)
+                console.log('flags', flags)
 
+                // check if master key enabled.
+                if ('lsfDisableMaster' in flags) {
+                    this.masterKeyEnabled = false
+                    console.log('masterkey dissabled')
+                }
             },
             async signerList(marker = undefined) {
                 let found = false
