@@ -36,11 +36,13 @@
         },
         async mounted() {
             console.log('landing mounted...')
-            this.hasSignerList = await this.checkSignerList()
+            this.hasSignerList = await this.signerList()
             console.log('hasSignerList', this.hasSignerList)
             if (this.hasSignerList) {
                 console.log('signerList', this.$store.getters.getSignerList)
             }
+
+            await this.accountInfo()
             
             this.isLoading = false
         },
@@ -63,9 +65,19 @@
             }
         },
         methods: {
-            async checkSignerList(marker = undefined) {
+            async accountInfo() {
                 const payload = {
-                    'id': 8,
+                    'id': 1,
+                    'command': 'account_info',
+                    'account': this.$store.getters.getAccount,
+                    'ledger_index': 'validated'
+                }
+                let res = await this.client.send(payload)
+                console.log('accountInfo', res)
+            },
+            async signerList(marker = undefined) {
+                const payload = {
+                    'id': 2,
                     'command': 'account_objects',
                     'account': this.$store.getters.getAccount,
                     'ledger_index': 'validated',
@@ -75,7 +87,7 @@
                     payload.marker = marker
                 }
                 let res = await this.client.send(payload)
-                console.log('resss', res)
+                // console.log('signerList', res)
                 for (let index = 0; index < res.account_objects.length; index++) {
                     const element = res.account_objects[index]
                     if (element.LedgerEntryType === 'SignerList') {
