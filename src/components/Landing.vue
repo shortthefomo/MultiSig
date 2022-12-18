@@ -67,9 +67,9 @@
                 if (marker != undefined) {
                     payload.marker = marker
                 }
-                let account_objects = await this.client.send(payload)
-                console.log('account_objects', account_objects)
-                for (let index = 0; index < account_objects.length; index++) {
+                let res = await this.client.send(payload)
+)
+                for (let index = 0; index < res.account_objects.length; index++) {
                     const element = account_objects[index]
                     if (element.LedgerEntryType === 'SignerList') {
                         return true
