@@ -5,28 +5,28 @@
             <div class="col-md-8 fs-4">
                 <p class="text-muted text-end fs-6">by three</p>
             </div>
-            <div class="col-md-12 fs-4">
-                <div v-for="signer_list in signer_lists">
-                    <h2>{{signer_list.SignerListID}}</h2>
-                    <table class="table">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Account</th>
-                                <th>SignerWeight</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="signer_entry in signer_list.SignerEntries">
-                                <td>{{signer_entry.SignerEntry.Account.substring(0, 5)}}...</td>
-                                <td>{{signer_entry.SignerEntry.SignerWeight}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </div>
 
+    <div class="col-md-12 fs-4">
+        <div v-for="signer_list in signer_lists">
+            <h2>{{signer_list.SignerListID}}</h2>
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Account</th>
+                        <th>SignerWeight</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="signer_entry in signer_list.SignerEntries">
+                        <td>{{signer_entry.SignerEntry.Account.substring(0, 5)}}...</td>
+                        <td>{{signer_entry.SignerEntry.SignerWeight}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <footer>
         <p class="h1 text-center">{{ledger}}</p>
         <p class="p-3 mb-2 bg-dark text-white">{{account}}</p>
