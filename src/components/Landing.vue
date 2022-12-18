@@ -12,7 +12,7 @@
 
             
             <div v-for="signer_entry in signer_list.SignerEntries">
-                <sup><small class="badge rounded-pill bg-danger me-1 position-relative top-0 end-0">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
+                <sup><small class="badge rounded-pill bg-danger me-1">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
                 <div class="p-3 mb-2 text-white bg-dark">
                     {{signer_entry.SignerEntry.Account}}
                 </div>
