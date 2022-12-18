@@ -6,14 +6,14 @@
             </div>  
         </div>
     </div>
-    <div class="col-md-12 text-white">
+    <div class="col-md-12">
         <div v-for="signer_list in signer_lists">
             <h2>SignerList {{signer_list.SignerListID}}</h2>
 
             
-            <div class="bg-dark" v-for="signer_entry in signer_list.SignerEntries">
+            <div class="p-3 mb-2 text-white bg-dark" v-for="signer_entry in signer_list.SignerEntries">
                 {{signer_entry.SignerEntry.Account}}
-                <sup><small class="badge rounded-pill bg-danger me-1">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
+                <sup><small class="badge rounded-pill bg-danger me-1 position-relative top-0 end-0">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
             </div>
         </div>
     </div>
