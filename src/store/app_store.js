@@ -40,10 +40,8 @@ export const AppStore = {
             state.account = account
         },
         SIGNER_LIST(state, data) {
-            //if (!('SignerListID' in data)) { return }
-            console.log('SIGNER_LIST', data)
+            if (!('SignerListID' in data)) { return }
             state.signer_lists[data.SignerListID] = data
-            console.log('state.signer_list', state.signer_lists)
         },
         USER_TOKEN(state, user_token) {
             state.user_token = user_token
