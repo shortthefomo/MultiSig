@@ -17,7 +17,7 @@
                     <small>{{signer_entry.SignerEntry.Account}}</small>
                 </div>
             </div>
-            <h4 calss="text-end">Quorum: <small>{{signer_list.SignerQuorum}}</small></h4>
+            <h4 class="text-end">Quorum: <small>{{signer_list.SignerQuorum}}</small></h4>
         </div>
     </div>
     <!-- <footer>

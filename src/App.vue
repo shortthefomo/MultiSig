@@ -6,10 +6,10 @@
     <main class="container flex-shrink-0 mb-4">
     </main>
 
-    <footer class="container bg-dark footer position-absolute bottom-0 start-50 translate-middle-x text-center">
+    <footer class="container bg-black footer position-absolute bottom-0 start-50 translate-middle-x text-center">
         <span class="text-light fancy-font position-absolute bottom-0 start-0 ms-2 mb-4">scan qr code -> </span>
         <button @click="openSign" class="btn btn-default mt-2 mb-4" role="button" id="open-sign">
-            <img src="/apple-touch-icon.png" class="border border-1 rounded-3" alt="open sign" width="60" />
+            <img src="/apple-touch-icon.png" class="border border-1 rounded-3" alt="open sign" width="55" />
         </button>
     </footer>
 </template>
@@ -237,8 +237,7 @@
         font-family: 'Permanent Marker', serif;
     }
 
-    .footer {
-        /* background: rgb(240,157,106); */
-        /* background: linear-gradient(180deg, rgba(240,157,106,1) 0%, rgba(246,215,156,1) 100%); */
+    .bg-black {
+        background-color: #000000;
     }
 </style>
