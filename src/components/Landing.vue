@@ -28,6 +28,7 @@
         props: ['client', 'Sdk', 'nodetype'],
         data() {
             return {
+                hasMultisig: false,
                 isLoading: true,
                 selectedRows: [],
                 ascending: false
@@ -35,7 +36,9 @@
         },
         async mounted() {
             console.log('landing mounted...')
-            
+            this.hasMultisig = await this.checkSignerList()
+            console.log('hasMultisig', this.hasMultisig)
+            this.isLoading = false
         },
         computed: {
             ledger() {
@@ -53,6 +56,30 @@
             }
         },
         methods: {
+            async checkSignerList(market = undefined) {
+                const payload = {
+                    'id': 8,
+                    'command': 'account_objects',
+                    'account': this.$store.getters.getAccount,
+                    'ledger_index': 'validated',
+                    'limit': 400
+                }
+                if (marker != undefined) {
+                    payload.marker = marker
+                }
+                let res = await this.client.send(payload)
+                for (let index = 0; index < account_objects.length; index++) {
+                    const element = account_objects[index]
+                    if (element.LedgerEntryType === 'SignerList') {
+                        return true
+                    }
+                }
+                if (res['marker'] !== undefined) {
+                    return await this.checkSignerList(res['marker'])
+                }
+                return false
+                
+            },
             currencyHexToUTF8(code) {
 				if (code.length === 3)
 					return code
