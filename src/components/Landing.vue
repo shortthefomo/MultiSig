@@ -9,20 +9,11 @@
     <div class="col-md-12 fs-4">
         <div v-for="signer_list in signer_lists">
             <h2>SignerList {{signer_list.SignerListID}}</h2>
-            <table class="table">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Account</th>
-                        <th>SignerWeight</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="signer_entry in signer_list.SignerEntries">
-                        <td>{{signer_entry.SignerEntry.Account.substring(0, 8)}}...</td>
-                        <td>{{signer_entry.SignerEntry.SignerWeight}}</td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <div class="alert alert-dark" role="alert" v-for="signer_entry in signer_list.SignerEntries">
+                <sup><small class="badge rounded-pill bg-info me-1">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
+                {{signer_entry.SignerEntry.Account.substring(0, 8)}}...
+            </div>
         </div>
     </div>
     <footer>
