@@ -56,7 +56,7 @@
             }
         },
         methods: {
-            async checkSignerList(market = undefined) {
+            async checkSignerList(marker = undefined) {
                 const payload = {
                     'id': 8,
                     'command': 'account_objects',
