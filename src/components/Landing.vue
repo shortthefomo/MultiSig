@@ -162,6 +162,7 @@
         },
     }
 </script>
+
 <style scoped>
     .bog-roll {
         width: 100%;
