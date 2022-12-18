@@ -43,7 +43,7 @@
             }
 
             await this.accountInfo()
-            console.log('getOwnerCount', this.$store.getters.getOwnerCount)
+            console.log('getAccountData', this.$store.getters.getAccountData)
 
             this.isLoading = false
         },
@@ -75,7 +75,7 @@
                 }
                 let res = await this.client.send(payload)
                 console.log('accountInfo', res)
-                this.$store.dispatch('setOwnerCount', res.account_data.OwnerCount)
+                this.$store.dispatch('setAccountData', res.account_data)
             },
             async signerList(marker = undefined) {
                 const payload = {
