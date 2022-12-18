@@ -3,16 +3,14 @@
         <div class="container-fluid py-5">
             <div class="col-md-8 fs-4">                
                 <p class="text-muted text-end fs-6">by three</p>
-            </div>
-            <div class="col-md-12 fs-4">
-                <button @click="openSign" class="btn btn-default" role="button" id="open-sign">
-                    <img src="/apple-touch-icon.png" class="rounded-3" alt="open sign" width="60" />
-                </button>
-                <!-- <a class="btn btn-yellow m-2" @click="openSign" role="button" id="open-sign">open sign</a> -->
-            </div>
+            </div>  
         </div>
     </div>
-
+    <div class="col-md-12 fs-4">
+        <button @click="openSign" class="btn btn-default" role="button" id="open-sign">
+            <img src="/apple-touch-icon.png" class="rounded-3" alt="open sign" width="60" />
+        </button>
+    </div>
     <div class="col-md-12 fs-4">
         <div v-for="signer_list in signer_lists">
             <h2>SignerList {{signer_list.SignerListID}}</h2>
