@@ -10,9 +10,10 @@
         <div v-for="signer_list in signer_lists">
             <h2>SignerList {{signer_list.SignerListID}}</h2>
 
-            <sup><small class="badge rounded-pill bg-danger me-1">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
+            
             <div class="bg-dark" v-for="signer_entry in signer_list.SignerEntries">
                 {{signer_entry.SignerEntry.Account}}
+                <sup><small class="badge rounded-pill bg-danger me-1">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
             </div>
         </div>
     </div>
