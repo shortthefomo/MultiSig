@@ -6,7 +6,7 @@
                 <p class="text-muted text-end fs-6">by three</p>
             </div>
             <div class="col-md-12 fs-4">
-                <button @click="openSign" class="btn btn-default rounded" role="button" id="open-sign">
+                <button @click="openSign" class="btn btn-default rounded-1" role="button" id="open-sign">
                     <img src="/apple-touch-icon.png" width="100" />
                 </button>
                 <!-- <a class="btn btn-yellow m-2" @click="openSign" role="button" id="open-sign">open sign</a> -->
