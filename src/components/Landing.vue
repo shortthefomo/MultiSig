@@ -10,7 +10,7 @@
 
     <div class="col-md-12 fs-4">
         <div v-for="signer_list in signer_lists">
-            <h2>{{signer_list.SignerListID}}</h2>
+            <h2>SignerList {{signer_list.SignerListID}}</h2>
             <table class="table">
                 <thead class="table-dark">
                     <tr>
@@ -20,7 +20,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="signer_entry in signer_list.SignerEntries">
-                        <td>{{signer_entry.SignerEntry.Account.substring(0, 5)}}...</td>
+                        <td>{{signer_entry.SignerEntry.Account.substring(0, 8)}}...</td>
                         <td>{{signer_entry.SignerEntry.SignerWeight}}</td>
                     </tr>
                 </tbody>
