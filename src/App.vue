@@ -6,7 +6,7 @@
     <main class="container flex-shrink-0 mb-4">
     </main>
 
-    <footer class="container footer mb-2 mt-auto">
+    <footer class="container footer position-absolute bottom-0 start-50 translate-middle-x">
         <div class="border-top py-3">
             &copy; Three
             <Refs />
