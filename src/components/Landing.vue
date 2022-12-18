@@ -17,7 +17,7 @@
                         </thead>
                         <tbody>
                             <tr v-for="signer_entry in signer_list.SignerEntries">
-                                <td>...{{signer_entry.SignerEntry.Account.substring(0, 5)}}</td>
+                                <td>{{signer_entry.SignerEntry.Account.substring(0, 5)}}...</td>
                                 <td>{{signer_entry.SignerEntry.SignerWeight}}</td>
                             </tr>
                         </tbody>
