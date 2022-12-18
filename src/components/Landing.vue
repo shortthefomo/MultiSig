@@ -75,8 +75,6 @@
                 }
                 let res = await this.client.send(payload)
                 console.log('accountInfo', res)
-                getOwnerCount
-
                 this.$store.dispatch('setOwnerCount', res.account_data.OwnerCount)
             },
             async signerList(marker = undefined) {
