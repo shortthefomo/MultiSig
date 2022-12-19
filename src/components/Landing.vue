@@ -68,7 +68,8 @@
 <script>
     import { flagNames } from 'flagnames'
     import { Buffer } from 'buffer'
-
+    import 'bootstrap/js/dist/modal'
+    
     const xapp = window.xAppSdk
 
     export default {
@@ -93,12 +94,12 @@
             
             this.isLoading = false
 
-            let myModal = document.getElementById('staticBackdrop')
-            let myInput = document.getElementById('staticBackdropLabel')
+            // let myModal = document.getElementById('staticBackdrop')
+            // let myInput = document.getElementById('staticBackdropLabel')
 
-            myModal.addEventListener('shown.bs.modal', function () {
-                myInput.focus()
-            })
+            // myModal.addEventListener('shown.bs.modal', function () {
+            //     myInput.focus()
+            // })
         },
         computed: {
             ledger() {
