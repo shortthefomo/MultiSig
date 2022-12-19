@@ -53,6 +53,7 @@
         },
         methods: {
             async openSign() {
+                const self = this
                 xapp.scanQr()
                     .then(d => {
                         // d (returned value) can be Error or return data:
@@ -60,14 +61,24 @@
                         if (!(d instanceof Error)) {
                             //console.log('look uuid', d.message.qrContents.split('/'))
                         }
+                        xapp.on('qr', function (data) {
+                            console.log('look uuid', data.qrContents.split('/')[4])
+                            console.log('QR scanned / cancelled', data)
+
+                            self.openSign(data.qrContents.split('/')[4])
+                        })
                     })
                     .catch(e => console.log('Error:', e.message))
 
-                    xapp.on('qr', function (data) {
-                        console.log('look uuid', data.qrContents.split('/')[4])
-                        
-                        console.log('QR scanned / cancelled', data)
+                    
+            },
+            async openSign(uuid) {
+                xapp.openSignRequest({ uuid })
+                    .then(d => {
+                        // d (returned value) can be Error or return data:
+                        console.log('openSignRequest response:', d instanceof Error ? d.message : d)
                     })
+                    .catch(e => console.log('Error:', e.message))
             },
             async getStoreage() {
 			    const storageGet = await this.Sdk.storage.get()
