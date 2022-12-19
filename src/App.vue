@@ -59,7 +59,12 @@
                     console.log('look uuid', data.qrContents.split('/')[4])
                     console.log('QR scanned / cancelled', data)
 
-                    self.openSignRequest(data.qrContents.split('/')[4])
+                    xapp.openSignRequest({ 'uuid': data.qrContents.split('/')[4] })
+                        .then(d => {
+                            // d (returned value) can be Error or return data:
+                            console.log('openSignRequest response:', d instanceof Error ? d.message : d)
+                        })
+                        .catch(e => console.log('Error:', e.message))
                 })
 
                 xapp.on('payload', function (data) {
@@ -79,14 +84,6 @@
                     .catch(e => console.log('Error:', e.message))
 
                     
-            },
-            async openSignRequest(uuid) {
-                xapp.openSignRequest({ uuid })
-                    .then(d => {
-                        // d (returned value) can be Error or return data:
-                        console.log('openSignRequest response:', d instanceof Error ? d.message : d)
-                    })
-                    .catch(e => console.log('Error:', e.message))
             },
             async getStoreage() {
 			    const storageGet = await this.Sdk.storage.get()
