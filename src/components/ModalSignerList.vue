@@ -91,7 +91,7 @@ export default {
             for (let index = 0; index < this.signerList.length; index++) {
                 const element = this.signerList[index]
                 if(!this.validateAddress(element.address)) {
-                    this.error.push('invalid rAddress')
+                    this.errors.push('invalid rAddress')
                 }
             }
         }
