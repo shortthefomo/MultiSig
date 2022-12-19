@@ -8,7 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Applying a signer list <em>grants access to the signatories</em> to sign any transaction for your account.</p>
+                <p>Applying a signer list <em>grants access to the signatories</em> to sign any transaction on behalf of your account.</p>
                 <p>The composibility of signers is extensive, <strong>use this with extreme caution!</strong></p>
                 <p>Visit xrpl.org and read the documentation on multisign, to learn more.</p>
                 <br/>
