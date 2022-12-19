@@ -15,8 +15,8 @@
             </div>
             <p>
                 <a v-if="masterKeyEnabled && signer_lists.length > 0" class="btn btn-pink mb-2" @click="removeMasterKey" role="button" id="remove-master">Remove Master Key</a>
-                <a v-else-if="signer_lists.length > 0" class="btn btn-pink mb-2" @click="restoreMasterKey" role="button" id="remove-master">Restore Master Key</a>
-                <a v-if="signer_lists.length == 0" class="btn btn-green mb-2 me-2" @click="createSignerList" role="button" id="remove-master">Create Signer List</a>
+                <a v-else-if="signer_lists.length > 0" class="btn btn-pink mb-2" @click="restoreMasterKey" role="button" id="restore-master">Restore Master Key</a>
+                <a v-if="signer_lists.length == 0" class="btn btn-green mb-2 me-2" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" id="signer-list-open">Create Signer List</a>
             </p>
         </div>
     </div>
@@ -34,6 +34,30 @@
             <a v-if="signer_lists.length > 0" class="btn btn-green mb-2 me-2" @click="editSignerList(signer_list.SignerListID)" role="button" id="remove-master">Edit Signer List</a>
             <hr />
         </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Launch static backdrop modal
+    </button> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            ...
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-green" @click="createSignerList">Understood</button>
+        </div>
+        </div>
+    </div>
     </div>
     <!-- <footer>
         <p class="h1 text-center">{{ledger}}</p>
