@@ -11,6 +11,13 @@
                 <p>Add accounts to a signer list and assign then weights. Applying the signer list <em>grants access to the signatories</em> to sign any transaction for your account.</p>
                 <p>The composibility of signers is extensive, <strong>use this with extreme caution!</strong></p>
 
+                <p v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                        <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                </p>
+
                 <div class="add-signer-list">
                     <div class="w-full mt-4 p-10">
                         <button v-if="signerList.length < 32" type="button" class="flex justify-start ms-2 rounded-md border px-3 py-2 bg-purple text-white"
@@ -46,9 +53,10 @@ export default {
     emits: ['updateNewSignerList'],
     data() {
         return {
+            errors: [],
             signerList: [
                 {
-                    rAddress: "",
+                    address: "",
                     weight: 1
                 },
             ],
@@ -57,17 +65,36 @@ export default {
     methods: {
         addMore() {
             this.signerList.push({
-                rAddress: "",
-                weight: 0
+                address: "",
+                weight: 1
             })
         },
         remove(index) {
             this.signerList.splice(index, 1)
         },
         async createSignerList() {
+            this.checkForm()
             console.log('TODO -> createSignerList')
             console.log('data', this.signerList)
         },
+        validateAddress(address) {
+            let ALLOWED_CHARS = 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz'
+            let regexp = new RegExp('^r[' + ALLOWED_CHARS + ']{27,35}$')
+
+            if (regexp.test(address)) {
+                return true
+            }
+            return false
+        },
+        checkForm() {
+            this.errors = []
+            for (let index = 0; index < this.signerList.length; index++) {
+                const element = this.signerList[index]
+                if(!this.validateAddress(element.address)) {
+                    this.error.push('invalid rAddress')
+                }
+            }
+        }
     },
 };
 </script>
