@@ -46,6 +46,7 @@ export default {
     },
     watch: {
         signerList() {
+            console.log('emit change', this.signerList)
             this.$emit('updateNewSignerList', this.signerList)
         }
     }
