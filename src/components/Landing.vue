@@ -16,7 +16,7 @@
             <p>
                 <a v-if="masterKeyEnabled && signer_lists.length > 0" class="btn btn-pink mb-2" @click="removeMasterKey" role="button" id="remove-master">Remove Master Key</a>
                 <a v-else-if="signer_lists.length > 0" class="btn btn-pink mb-2" @click="restoreMasterKey" role="button" id="restore-master">Restore Master Key</a>
-                <!-- <button v-if="signer_lists.length == 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create Signer List</button> -->
+                <button v-if="signer_lists.length == 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create Signer List</button>
             </p>
         </div>
     </div>
@@ -37,9 +37,7 @@
     </div>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Launch static backdrop modal
-    </button>
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Launch static backdrop modal</button> -->
 
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -69,7 +67,7 @@
     import { flagNames } from 'flagnames'
     import { Buffer } from 'buffer'
     import 'bootstrap/js/dist/modal'
-    
+
     const xapp = window.xAppSdk
 
     export default {
