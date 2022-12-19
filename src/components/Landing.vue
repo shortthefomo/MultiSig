@@ -16,7 +16,7 @@
             <p>
                 <a v-if="masterKeyEnabled && signer_lists.length > 0" class="btn btn-pink mb-2" @click="removeMasterKey" role="button" id="remove-master">Remove Master Key</a>
                 <a v-else-if="signer_lists.length > 0" class="btn btn-pink mb-2" @click="restoreMasterKey" role="button" id="restore-master">Restore Master Key</a>
-                <a v-if="signer_lists.length == 0" class="btn btn-green mb-2 me-2" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" id="signer-list-open">Create Signer List</a>
+                <a v-if="signer_lists.length == 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create Signer List</a>
             </p>
         </div>
     </div>
