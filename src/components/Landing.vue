@@ -12,7 +12,10 @@
             
             <div class="col-md-8 fs-4">                
                 <p class="text-muted text-end fs-6"><span class="fancy-font">multisig</span>  by three</p>
-            </div>  
+            </div>
+            <p>
+                <a v-if="masterKeyEnabled" class="btn btn-orange m-2" @click="removeMasterKey" role="button" id="remove-master">Remove Master Key</a>
+            </p>
         </div>
     </div>
     <div class="col-md-12">
@@ -102,6 +105,9 @@
                     console.log('masterkey dissabled')
                 }
             },
+            async removeMasterKey() {
+                console.log('remove master key')
+            },
             async signerList(marker = undefined) {
                 let found = false
                 const payload = {
@@ -182,6 +188,11 @@
     }
     .btn-purple {
         background-color: #753ee2;
+        color: #ffffff;
+    }
+
+    .btn-orange {
+        background-color: #ff8f07;
         color: #ffffff;
     }
 
