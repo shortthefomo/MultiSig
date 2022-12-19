@@ -3,9 +3,9 @@
         <div class="container-fluid py-3">
             <p class="h1 text-start">{{ledger}}</p>
             <p class="p-2 mb-2 bg-warning">
-                <small>{{account}}</small>
-                <sup><i v-if="masterKeyEnabled" class="position-absolute top-1 start-0 h1 bi bi-patch-exclamation-fill bg-primary"></i>
-                <i v-else class="position-absolute top-1 start-0 h1 bi bi-patch-exclamation bg-warning"></i></sup>
+                <small class="text-wrap">{{account}}</small>
+                <sup><i v-if="masterKeyEnabled" class="position-absolute top-1 start-0 h1 bi bi-patch-exclamation-fill text-primary"></i>
+                <i v-else class="position-absolute top-1 start-0 h1 bi bi-patch-exclamation text-warning"></i></sup>
             </p>
             
             <div class="col-md-8 fs-4">                
@@ -19,7 +19,7 @@
             <div v-for="signer_entry in signer_list.SignerEntries">
                 <sup><small class="badge rounded-pill bg-danger me-1 position-absolute top-1 start-0">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
                 <div class="p-3 mb-2 text-white bg-dark">
-                    <small>{{signer_entry.SignerEntry.Account}}</small>
+                    <small class="text-wrap">{{signer_entry.SignerEntry.Account}}</small>
                 </div>
             </div>
             <h4 class="text-end">Quorum: <small>{{signer_list.SignerQuorum}}</small></h4>
