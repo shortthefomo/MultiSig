@@ -8,9 +8,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Add accounts to a signer list and assign then weights. Applying the signer list <em>grants access to the signatories</em> to sign any transaction for your account.</p>
+                <p>Applying a signer list <em>grants access to the signatories</em> to sign any transaction for your account.</p>
                 <p>The composibility of signers is extensive, <strong>use this with extreme caution!</strong></p>
-
+                <p>Visit xrpl.org and read the documentation on multisign, to learn more.</p>
+                <br/>
                 <p v-if="errors.length" class="text-danger">
                     <b>Please correct the following error(s):</b>
                     <ul>
