@@ -111,16 +111,16 @@
                 }
             },
             async editSignerList(SignerListID) {
-
+                console.log('TODO -> editSignerList', SignerListID)
             },
             async createSignerList() {
-
+                console.log('TODO -> createSignerList')
             },
             async removeMasterKey() {
-                console.log('remove master key')
+                console.log('TODO -> removeMasterKey')
             },
             async restoreMasterKey() {
-
+                console.log('TODO -> restoreMasterKey')
             },
             async signerList(marker = undefined) {
                 let found = false
