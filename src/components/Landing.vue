@@ -5,7 +5,7 @@
             <p class="p-2 mb-2 bg-warning">
                 <small class="text-wrap">{{account}}</small>
                 <sup>
-                    <i v-if="masterKeyEnabled" class="master-key position-absolute top-0 start-0 h1 bi bi-patch-check-fill text-primary"></i>
+                    <i v-if="masterKeyEnabled && signer_lists.length == 0" class="master-key position-absolute top-0 start-0 h1 bi bi-patch-check-fill text-primary"></i>
                     <i v-else class="master-key position-absolute top-0 start-0 h1 bi bi-patch-minus-fill text-warning"></i>
                 </sup>
             </p>
