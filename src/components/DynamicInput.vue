@@ -38,12 +38,13 @@ export default {
     },
     methods: {
         addMore() {
-            this.courses.push({
-                courseName: "",
+            this.signerList.push({
+                rAddress: "",
+                weight: 0
             })
         },
         remove(index) {
-            this.courses.splice(index, 1)
+            this.signerList.splice(index, 1)
         },
     },
 };
