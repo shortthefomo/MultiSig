@@ -122,7 +122,7 @@ export default {
             }
             else {
                 if (quorum < sum) {
-                    this.errors.push('quorum must be greater than all weights summed')
+                    this.errors.push('quorum must be greater than or equal to all weights summed')
                 }
             }
         }
