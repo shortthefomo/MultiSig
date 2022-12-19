@@ -101,7 +101,7 @@ export default {
                 if(!this.validateAddress(element.address)) {
                     this.errors.push('invalid rAddress')
                 }
-                if (typeof element.weight !== 'number') {
+                if (typeof element.weight !== 'number' || element.weight < 0) {
                     this.errors.push('invalid weight')
                 }
             }
