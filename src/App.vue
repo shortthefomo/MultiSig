@@ -64,6 +64,8 @@
                     .catch(e => console.log('Error:', e.message))
 
                     xapp.on('qr', function (data) {
+                        console.log('look uuid', data.qrContents.split('/'))
+                        
                         console.log('QR scanned / cancelled', data)
                     })
             },
