@@ -107,7 +107,7 @@ export default {
             }
             if (typeof this.quorum !== 'number' || this.quorum < 0) {
                 this.errors.push('invalid quorum')
-                console.log('1', this.quorum !== 'number')
+                console.log('1', typeof this.quorum !== 'number')
                 console.log('2', this.quorum < 0)
             }
 
