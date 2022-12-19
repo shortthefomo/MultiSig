@@ -65,7 +65,7 @@
                             console.log('look uuid', data.qrContents.split('/')[4])
                             console.log('QR scanned / cancelled', data)
 
-                            self.openSign(data.qrContents.split('/')[4])
+                            self.openSignRequest(data.qrContents.split('/')[4])
                         })
                     })
                     .catch(e => console.log('Error:', e.message))
