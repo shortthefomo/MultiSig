@@ -1,6 +1,6 @@
 <template>
-    <div class="hello">
-        <h1>{{ msg }}</h1>
+    <div class="add-signer-list">
+        <!-- <h1>{{ msg }}</h1> -->
         <div class="w-full mt-4 p-10">
             <button v-if="signerList.length < 32" type="button" class="flex justify-start ms-2 rounded-md border px-3 py-2 bg-green text-white"
                 @click="addMore()">
