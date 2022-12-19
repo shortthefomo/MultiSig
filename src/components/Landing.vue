@@ -4,8 +4,8 @@
             <p class="h1 text-start">{{ledger}}</p>
             <p class="p-2 mb-2 bg-warning">
                 <small class="text-wrap">{{account}}</small>
-                <sup><i v-if="masterKeyEnabled" class="position-absolute top-1 start-0 h1 bi bi-patch-exclamation-fill text-primary"></i>
-                <i v-else class="position-absolute top-1 start-0 h1 bi bi-patch-exclamation text-warning"></i></sup>
+                <sup><i v-if="masterKeyEnabled" class="position-absolute top-0 start-0 h1 bi bi-patch-exclamation-fill text-primary"></i>
+                <i v-else class="position-absolute top-0 start-0 h1 bi bi-patch-exclamation text-warning"></i></sup>
             </p>
             
             <div class="col-md-8 fs-4">                
