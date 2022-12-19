@@ -36,27 +36,8 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Create Signer List</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <p>Add accounts to a signer list and assign then weights. Applying the signer list <em>grants access to the signatories</em> to sign any transaction for your account.</p>
-            <p>The composibility of signers is extensive, <strong>use this with extreme caution!</strong></p>
+    <ModalSignerList :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="staticBackdrop"/>
 
-            <DynamicInput :client="client" :Sdk="Sdk" :nodetype="nodetype" @updateNewSignerList="updateNewSignerList" />
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-green" @click="createSignerList">Apply</button>
-        </div>
-        </div>
-    </div>
-    </div>
     <!-- <footer>
         <p class="h1 text-center">{{ledger}}</p>
         <p class="p-3 mb-2 bg-warning text-white">{{account}}</p>
@@ -68,7 +49,7 @@
     import { flagNames } from 'flagnames'
     import { Buffer } from 'buffer'
 
-    import DynamicInput from "./DynamicInput.vue"
+    import ModalSignerList from "./ModalSignerList.vue"
     import 'bootstrap/js/dist/modal'
 
     const xapp = window.xAppSdk
@@ -77,7 +58,7 @@
         name: 'Landing',
         props: ['client', 'Sdk', 'nodetype'],
         components: {
-            DynamicInput,
+            ModalSignerList,
         },
         data() {
             return {
@@ -85,7 +66,6 @@
                 hasSignerList: false,
                 isLoading: true,
                 signerLists: [],
-                newSignerList: [],
                 selectedRows: [],
                 ascending: false
             }
@@ -125,10 +105,6 @@
             }
         },
         methods: {
-            updateNewSignerList(value) {
-                this.newSignerList = value
-                console.log('updateNewSignerList', value)
-            },
             async accountInfo() {
                 const payload = {
                     'id': 1,
