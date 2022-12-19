@@ -47,6 +47,12 @@
         <div class="modal-body">
             <p>Add accounts to a signer list and assign then weights. Applying the signer list <em>grants access to the signatories</em> to sign any transaction for your account.</p>
             <p>The composibility of signers is extensive, <strong>use this with extreme caution!</strong></p>
+
+            <input :key="index" v-model="input.value" type="text" />
+
+            <div v-for="(input, index) in newSignerList" class="input-group mb-3">
+
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -62,8 +68,11 @@
 </template>
 
 <script>
+
     import { flagNames } from 'flagnames'
     import { Buffer } from 'buffer'
+
+    import DynamicInput from "./DynamicInput"
     import 'bootstrap/js/dist/modal'
 
     const xapp = window.xAppSdk
@@ -71,12 +80,16 @@
     export default {
         name: 'Landing',
         props: ['client', 'Sdk', 'nodetype'],
+        components: {
+            DynamicInput,
+        },
         data() {
             return {
                 masterKeyEnabled: true, 
                 hasSignerList: false,
                 isLoading: true,
                 signerLists: [],
+                newSignerList: [],
                 selectedRows: [],
                 ascending: false
             }
