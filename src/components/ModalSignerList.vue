@@ -96,6 +96,7 @@ export default {
         },
         checkForm() {
             this.errors = []
+            let sum = 0
             for (let index = 0; index < this.signerList.length; index++) {
                 const element = this.signerList[index]
                 if(!this.validateAddress(element.address)) {
@@ -108,13 +109,22 @@ export default {
                     console.log('1', isNaN(weight))
                     console.log('2', weight < 1)
                 }
+                else {
+                    sum += sum
+                }
             }
 
             const quorum = (this.quorum * 1)
             if (isNaN(quorum) || quorum < 1) {
                 this.errors.push('invalid quorum')
+                console.log('1', isNaN(quorum))
+                console.log('2', quorum < 1)
             }
-
+            else {
+                if (quorum < sum) {
+                    this.errors.push('quorum must be greater than all weights summed')
+                }
+            }
         }
     },
 };
