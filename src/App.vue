@@ -57,6 +57,10 @@
                     .then(d => {
                         // d (returned value) can be Error or return data:
                         console.log('scanQr response:', d instanceof Error ? d.message : d)
+                        if (!(d instanceof Error)) {
+                            const qrContents = d.scanQr.qrContents
+                            console.log('look uuid', qrContents.split('/'))
+                        }
                     })
                     .catch(e => console.log('Error:', e.message))
             },
