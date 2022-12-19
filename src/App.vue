@@ -50,8 +50,21 @@
             
             await this.jwtFlow()
             this.components.Landing = true
+            this.xAppListeners()
         },
         methods: {
+            async xAppListeners() {
+                xapp.on('qr', function (data) {
+                    console.log('look uuid', data.qrContents.split('/')[4])
+                    console.log('QR scanned / cancelled', data)
+
+                    self.openSignRequest(data.qrContents.split('/')[4])
+                })
+
+                xapp.on('payload', function (data) {
+                    console.log('Payload resolved', data)
+                })
+            },
             async openScan() {
                 const self = this
                 xapp.scanQr()
@@ -61,16 +74,7 @@
                         if (!(d instanceof Error)) {
                             //console.log('look uuid', d.message.qrContents.split('/'))
                         }
-                        xapp.on('qr', function (data) {
-                            console.log('look uuid', data.qrContents.split('/')[4])
-                            console.log('QR scanned / cancelled', data)
-
-                            self.openSignRequest(data.qrContents.split('/')[4])
-                        })
-
-                        xapp.on('payload', function (data) {
-                            console.log('Payload resolved', data)
-                        })
+                        
                     })
                     .catch(e => console.log('Error:', e.message))
 
