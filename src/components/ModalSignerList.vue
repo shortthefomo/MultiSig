@@ -101,7 +101,14 @@ export default {
                 if(!this.validateAddress(element.address)) {
                     this.errors.push('invalid rAddress')
                 }
+                if (typeof element.weight !== 'number') {
+                    this.errors.push('invalid weight')
+                }
             }
+            if (typeof this.quorum !== 'number' || this.quorum < 0) {
+                this.errors.push('invalid quorum')
+            }
+
         }
     },
 };
