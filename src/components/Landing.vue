@@ -48,7 +48,7 @@
             <p>Add accounts to a signer list and assign then weights. Applying the signer list <em>grants access to the signatories</em> to sign any transaction for your account.</p>
             <p>The composibility of signers is extensive, <strong>use this with extreme caution!</strong></p>
 
-            <DynamicInput :client="client" :Sdk="Sdk" :nodetype="nodetype" @signerList="updateNewSignerList" />
+            <DynamicInput :client="client" :Sdk="Sdk" :nodetype="nodetype" @updateNewSignerList="updateNewSignerList" />
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

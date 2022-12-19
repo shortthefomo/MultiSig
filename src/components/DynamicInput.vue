@@ -22,7 +22,7 @@
 export default {
     name: "Create Signer List",
     props: ['client', 'Sdk', 'nodetype'],
-    emits: ['signerList'],
+    emits: ['updateNewSignerList'],
     data() {
         return {
             signerList: [
@@ -46,7 +46,7 @@ export default {
     },
     watch: {
         signerList() {
-            this.$emit('signerList', this.signerList)
+            this.$emit('updateNewSignerList', this.signerList)
         }
     }
 };
