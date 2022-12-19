@@ -102,8 +102,11 @@ export default {
                     this.errors.push('invalid rAddress')
                 }
                 const weight = (element.weight * 1)
+                console.log('weight', weight)
                 if (typeof weight !== 'number' || weight < 0) {
                     this.errors.push('invalid weight')
+                    console.log('1', typeof weight !== 'number')
+                    console.log('2', weight < 0)
                 }
             }
 
