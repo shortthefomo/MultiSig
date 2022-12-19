@@ -110,7 +110,7 @@ export default {
                     console.log('2', weight < 1)
                 }
                 else {
-                    sum += sum
+                    sum += weight
                 }
             }
 
