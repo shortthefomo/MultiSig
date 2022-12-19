@@ -68,7 +68,7 @@
     import { flagNames } from 'flagnames'
     import { Buffer } from 'buffer'
 
-    import DynamicInput from "src/components/DynamicInput.vue"
+    import DynamicInput from "./DynamicInput.vue"
     import 'bootstrap/js/dist/modal'
 
     const xapp = window.xAppSdk
