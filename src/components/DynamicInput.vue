@@ -1,6 +1,5 @@
 <template>
     <div class="add-signer-list">
-        <!-- <h1>{{ msg }}</h1> -->
         <div class="w-full mt-4 p-10">
             <button v-if="signerList.length < 32" type="button" class="flex justify-start ms-2 rounded-md border px-3 py-2 bg-purple text-white"
                 @click="addMore()">
@@ -21,10 +20,9 @@
   
 <script>
 export default {
-    name: "HelloWorld",
-    props: {
-        msg: String,
-    },
+    name: "Create Signer List",
+    props: ['client', 'Sdk', 'nodetype'],
+    emits: ['signerList'],
     data() {
         return {
             signerList: [
@@ -46,6 +44,11 @@ export default {
             this.signerList.splice(index, 1)
         },
     },
+    watch: {
+        signerList() {
+            this.$emit('signerList', this.signerList)
+        }
+    }
 };
 </script>
   

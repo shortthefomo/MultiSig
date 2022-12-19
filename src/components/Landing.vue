@@ -48,7 +48,7 @@
             <p>Add accounts to a signer list and assign then weights. Applying the signer list <em>grants access to the signatories</em> to sign any transaction for your account.</p>
             <p>The composibility of signers is extensive, <strong>use this with extreme caution!</strong></p>
 
-            <DynamicInput msg="Example of Dynamic Input" />
+            <DynamicInput :client="client" :Sdk="Sdk" :nodetype="nodetype" @signerList="updateNewSignerList" />
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -89,6 +89,9 @@
                 selectedRows: [],
                 ascending: false
             }
+        },
+        updateNewSignerList(value) {
+            this.newSignerList = value
         },
         async mounted() {
             console.log('landing mounted...')
@@ -152,6 +155,7 @@
             },
             async createSignerList() {
                 console.log('TODO -> createSignerList')
+                console.log('data', this.newSignerList)
             },
             async removeMasterKey() {
                 console.log('TODO -> removeMasterKey')
