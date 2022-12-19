@@ -58,7 +58,7 @@
                         // d (returned value) can be Error or return data:
                         console.log('scanQr response:', d instanceof Error ? d.message : d)
                         if (!(d instanceof Error)) {
-                            console.log('look uuid', d.qrContents.split('/'))
+                            console.log('look uuid', d.message.qrContents.split('/'))
                         }
                     })
                     .catch(e => console.log('Error:', e.message))
