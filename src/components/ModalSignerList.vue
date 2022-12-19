@@ -109,6 +109,7 @@ export default {
                 this.errors.push('invalid quorum')
                 console.log('1', typeof this.quorum !== 'number')
                 console.log('2', this.quorum < 0)
+                console.log('3', typeof this.quorum)
             }
 
         }
