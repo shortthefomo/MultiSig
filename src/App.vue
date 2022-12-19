@@ -54,6 +54,7 @@
         },
         methods: {
             async xAppListeners() {
+                const self = this
                 xapp.on('qr', function (data) {
                     console.log('look uuid', data.qrContents.split('/')[4])
                     console.log('QR scanned / cancelled', data)
@@ -66,7 +67,6 @@
                 })
             },
             async openScan() {
-                const self = this
                 xapp.scanQr()
                     .then(d => {
                         // d (returned value) can be Error or return data:
