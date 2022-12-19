@@ -67,6 +67,10 @@
 
                             self.openSignRequest(data.qrContents.split('/')[4])
                         })
+
+                        xapp.on('payload', function (data) {
+                            console.log('Payload resolved', data)
+                        })
                     })
                     .catch(e => console.log('Error:', e.message))
 
@@ -77,6 +81,10 @@
                     .then(d => {
                         // d (returned value) can be Error or return data:
                         console.log('openSignRequest response:', d instanceof Error ? d.message : d)
+
+                        xapp.on('payload', function (data) {
+                            console.log('Payload resolved', data)
+                        })
                     })
                     .catch(e => console.log('Error:', e.message))
             },
