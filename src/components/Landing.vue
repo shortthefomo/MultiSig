@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <ModalSignerList :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="create-signer-list"/>
+    <ModalSignerList :client="client" :Sdk="Sdk" :nodetype="nodetype" />
 
     <!-- <footer>
         <p class="h1 text-center">{{ledger}}</p>
