@@ -8,7 +8,7 @@
 
     <footer class="container bg-black footer position-absolute bottom-0 start-50 translate-middle-x text-center">
         <span class="text-light fancy-font position-absolute bottom-0 start-0 ms-2 mb-4">scan qr code -> </span>
-        <button @click="openSign" class="btn btn-default mt-2 mb-4" role="button" id="open-sign">
+        <button @click="openScan" class="btn btn-default mt-2 mb-4" role="button" id="open-sign">
             <img src="/apple-touch-icon.png" class="border border-1 rounded-3" alt="open sign" width="55" />
         </button>
     </footer>
@@ -52,7 +52,7 @@
             this.components.Landing = true
         },
         methods: {
-            async openSign() {
+            async openScan() {
                 const self = this
                 xapp.scanQr()
                     .then(d => {
@@ -72,7 +72,7 @@
 
                     
             },
-            async openSign(uuid) {
+            async openSignRequest(uuid) {
                 xapp.openSignRequest({ uuid })
                     .then(d => {
                         // d (returned value) can be Error or return data:
