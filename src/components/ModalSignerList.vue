@@ -1,10 +1,10 @@
 <template>
     <!-- Modal -->
-    <div class="modal fade" id="createSignerList" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="createSignerListLabel" aria-hidden="true">
+    <div class="modal fade" :id="identity" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="identity +'Label'" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createSignerListLabel">Create Signer List</h5>
+                <h5 class="modal-title" :id="identity +'Label'">Create Signer List</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -42,7 +42,7 @@
 <script>
 export default {
     name: "Create Signer List",
-    props: ['client', 'Sdk', 'nodetype'],
+    props: ['client', 'Sdk', 'nodetype', 'identity'],
     emits: ['updateNewSignerList'],
     data() {
         return {
