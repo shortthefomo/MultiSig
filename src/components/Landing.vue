@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-12">
         <div v-for="signer_list in signer_lists">
-            <p>SignerList: <small>{{signer_list.SignerListID}}</small></p>
+            <p><span class="badge rounded-pill bg-light text-dark">SignerList: <small>{{signer_list.SignerListID}}</small></span></p>
             <div v-for="signer_entry in signer_list.SignerEntries">
                 <sup><small class="badge rounded-pill bg-danger me-1 position-absolute top-1 start-0">{{signer_entry.SignerEntry.SignerWeight}}</small></sup>
                 <div class="p-3 mb-2 text-white bg-dark">
