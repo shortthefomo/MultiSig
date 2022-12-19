@@ -28,7 +28,8 @@
                     <small class="text-wrap">{{signer_entry.SignerEntry.Account}}</small>
                 </div>
             </div>
-            <h4 class="text-end">Quorum: <small>{{signer_list.SignerQuorum}}</small></h4>
+            
+            <h4 class="text-end"><span class="badge rounded-pill bg-light text-dark">Quorum: <small>{{signer_list.SignerQuorum}}</small></span></h4>
             <a v-if="signer_lists.length > 0" class="btn btn-green mb-2 me-2" @click="editSignerList(signer_list.SignerListID)" role="button" id="remove-master">Edit Signer List</a>
         </div>
     </div>
