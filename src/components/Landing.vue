@@ -4,8 +4,8 @@
             <p class="h1 text-start">{{ledger}}</p>
             <p class="p-2 mb-2 bg-warning"><small>{{account}}</small></p>
             <p>
-                <i v-if="masterKeyEnabled" class="bi bi-patch-exclamation-fill bg-primary"></i>
-                <i v-else class="bi bi-patch-exclamation bg-warning"></i>
+                <sup><i v-if="masterKeyEnabled" class="h1 bi bi-patch-exclamation-fill bg-primary"></i>
+                <i v-else class="h1 bi bi-patch-exclamation bg-warning"></i></sup>
             </p>
             <div class="col-md-8 fs-4">                
                 <p class="text-muted text-end fs-6"><span class="fancy-font">multisig</span>  by three</p>
