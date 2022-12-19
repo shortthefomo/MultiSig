@@ -165,7 +165,7 @@
 
 <style scoped>
     .master-key {
-        margin-top: -10px;
+        margin-top: -20px;
     }
     .fancy-font {
         font-family: 'Permanent Marker', serif;
