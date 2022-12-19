@@ -14,7 +14,9 @@
                 <p class="text-muted text-end fs-6"><span class="fancy-font">multisig</span>  by three</p>
             </div>
             <p>
-                <a v-if="masterKeyEnabled" class="btn btn-yellow mb-2" @click="removeMasterKey" role="button" id="remove-master">Remove Master Key</a>
+                <a v-if="masterKeyEnabled" class="btn btn-pink mb-2" @click="removeMasterKey" role="button" id="remove-master">Remove Master Key</a>
+                <a v-if="signer_lists.length == 0" class="btn btn-green mb-2" @click="removeMasterKey" role="button" id="remove-master">Create Signer List</a>
+                <a v-if="signer_lists.length > 0" class="btn btn-green mb-2" @click="removeMasterKey" role="button" id="remove-master">Edit Signer List</a>
             </p>
         </div>
     </div>
