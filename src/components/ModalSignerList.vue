@@ -86,6 +86,31 @@ export default {
             if(this.checkForm()) { return }
 
             console.log('TODO -> createSignerList')
+            this.pushSignerList()
+        },
+        pushSignerList() {
+            const fee = String((3 + 1) + 40)  // (n +1) * fee
+            const account_data = this.$store.getters.getAccountData
+
+            const SignerEntries = []
+            for (let index = 0; index < this.signerList.length; index++) {
+                const element = this.signerList[index]
+                SignerEntries.push({
+                    SignerEntry: {
+                        Account: element.address,
+                        SignerWeight: element.weight
+                    }
+                })
+            }
+            const payload = {
+                TransactionType: 'SignerListSet',
+                Account: this.$store.getters.getAccount,
+                Fee: String((3 + 1) + 40), // (n +1) * fee
+                Sequence: account_data.Sequence,
+                SignerQuorum: 3,
+                SignerEntries
+            }
+            console.log('payload', payload)
         },
         validateAddress(address) {
             let ALLOWED_CHARS = 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz'
