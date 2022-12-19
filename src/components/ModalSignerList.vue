@@ -103,15 +103,15 @@ export default {
                 }
                 const weight = (element.weight * 1)
                 console.log('weight', weight)
-                if (isNaN(weight) || weight < 0) {
+                if (isNaN(weight) || weight < 1) {
                     this.errors.push('invalid weight')
                     console.log('1', isNaN(weight))
-                    console.log('2', weight < 0)
+                    console.log('2', weight < 1)
                 }
             }
 
             const quorum = (this.quorum * 1)
-            if (isNaN(quorum) || quorum < 0) {
+            if (isNaN(quorum) || quorum < 1) {
                 this.errors.push('invalid quorum')
             }
 
