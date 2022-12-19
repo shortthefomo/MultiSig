@@ -82,9 +82,10 @@ export default {
             this.signerList.splice(index, 1)
         },
         async createSignerList() {
-            this.checkForm()
-            console.log('TODO -> createSignerList')
             console.log('data', this.signerList)
+            if(this.checkForm()) { return }
+
+            console.log('TODO -> createSignerList')
         },
         validateAddress(address) {
             let ALLOWED_CHARS = 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz'
@@ -126,6 +127,10 @@ export default {
                     this.errors.push('quorum must be greater than or equal to all weights summed')
                 }
             }
+            if (this.errors.length > 0) {
+                return false
+            }
+            return true
         }
     },
 };
