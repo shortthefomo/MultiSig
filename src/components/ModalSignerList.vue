@@ -61,11 +61,11 @@ export default {
     data() {
         return {
             errors: [],
-            quorum: 'quorum',
+            quorum: '',
             signerList: [
                 {
-                    address: 'rAddress',
-                    weight: 'weight'
+                    address: '',
+                    weight: ''
                 },
             ],
         }
@@ -73,8 +73,8 @@ export default {
     methods: {
         addMore() {
             this.signerList.push({
-                address: 'rAddress',
-                weight: 'weight'
+                address: '',
+                weight: ''
             })
         },
         remove(index) {
