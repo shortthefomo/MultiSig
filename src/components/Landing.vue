@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <ModalSignerList :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="staticBackdrop"/>
+    <ModalSignerList :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="create-signer-list"/>
 
     <!-- <footer>
         <p class="h1 text-center">{{ledger}}</p>
@@ -129,10 +129,6 @@
             },
             async editSignerList(SignerListID) {
                 console.log('TODO -> editSignerList', SignerListID)
-            },
-            async createSignerList() {
-                console.log('TODO -> createSignerList')
-                console.log('data', this.newSignerList)
             },
             async removeMasterKey() {
                 console.log('TODO -> removeMasterKey')
