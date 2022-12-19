@@ -34,7 +34,11 @@
                             </div>
                         </div>
                     </div>
-                    <input v-model="quorum" placeholder="quorum" class="w-full py-2 border border-indigo-500 rounded" />
+                    <div class="flex justify-start ms-2 mt-4">
+                        <input id="quorum" v-model="quorum" placeholder="quorum" class="w-full py-2 border border-indigo-500 rounded" />
+                        <label class="form-check-label" for="quorum">Quorum</label>
+                    </div>
+                    
                 </div>
             </div>
             <div class="modal-footer">
