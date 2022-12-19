@@ -16,7 +16,6 @@
             <p>
                 <a v-if="masterKeyEnabled" class="btn btn-pink mb-2" @click="removeMasterKey" role="button" id="remove-master">Remove Master Key</a>
                 <a v-if="signer_lists.length == 0" class="btn btn-green mb-2 me-2" @click="createSignerList" role="button" id="remove-master">Create Signer List</a>
-                <a v-if="signer_lists.length > 0" class="btn btn-green mb-2 me-2" @click="editSignerList" role="button" id="remove-master">Edit Signer List</a>
             </p>
         </div>
     </div>
@@ -30,6 +29,7 @@
                 </div>
             </div>
             <h4 class="text-end">Quorum: <small>{{signer_list.SignerQuorum}}</small></h4>
+            <a v-if="signer_lists.length > 0" class="btn btn-green mb-2 me-2" @click="editSignerList(signer_list.SignerListID)" role="button" id="remove-master">Edit Signer List</a>
         </div>
     </div>
     <!-- <footer>
@@ -107,7 +107,7 @@
                     console.log('masterkey dissabled')
                 }
             },
-            async editSignerList() {
+            async editSignerList(SignerListID) {
 
             },
             async createSignerList() {
