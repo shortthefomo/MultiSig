@@ -34,6 +34,7 @@
                             </div>
                         </div>
                     </div>
+                    <input v-model="quorum" placeholder="quorum" class="w-full py-2 border border-indigo-500 rounded" />
                 </div>
             </div>
             <div class="modal-footer">
@@ -54,6 +55,7 @@ export default {
     data() {
         return {
             errors: [],
+            quorum: 1,
             signerList: [
                 {
                     address: "",
