@@ -27,9 +27,9 @@
                         <div v-for="(signers, index) in signerList" :key="index">
                             <div class="flex justify-start ms-2 mt-4">
                                 <input :id="index + 'rAddress'" v-model="signers.rAddress" placeholder="r address" class="w-full py-2 border border-indigo-500 rounded" />
-                                <label class="form-check-label" :for="index + 'weight'"> rAddress</label>
+                                <!-- <label class="form-check-label" :for="index + 'weight'"> rAddress</label> -->
                                 <input :id="index + 'weight'" v-model="signers.weight" placeholder="weight" class="w-full py-2 border border-indigo-500 rounded" />
-                                <label class="form-check-label" :for="index + 'weight'"> Weight</label>
+                                <!-- <label class="form-check-label" :for="index + 'weight'"> Weight</label> -->
                                 <button type="button" class="ms-2 rounded-md border px-3 py-2 bg-warning text-white" @click="remove(index)" v-show="index != 0">
                                     Remove
                                 </button>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="flex justify-start ms-2 mt-4">
                         <input id="quorum" v-model="quorum" placeholder="quorum" class="w-full py-2 border border-indigo-500 rounded" />
-                        <label class="form-check-label" for="quorum"> Quorum</label>
+                        <!-- <label class="form-check-label" for="quorum"> Quorum</label> -->
                     </div>
                     
                 </div>
@@ -61,11 +61,11 @@ export default {
     data() {
         return {
             errors: [],
-            quorum: 1,
+            quorum: 'quorum',
             signerList: [
                 {
-                    address: "",
-                    weight: 1
+                    address: 'rAddress',
+                    weight: 'weight'
                 },
             ],
         }
@@ -73,8 +73,8 @@ export default {
     methods: {
         addMore() {
             this.signerList.push({
-                address: "",
-                weight: 1
+                address: 'rAddress',
+                weight: 'weight'
             })
         },
         remove(index) {
