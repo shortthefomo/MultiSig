@@ -2,7 +2,7 @@
     <div class="add-signer-list">
         <!-- <h1>{{ msg }}</h1> -->
         <div class="w-full mt-4 p-10">
-            <button v-if="signerList.length < 32" type="button" class="flex justify-start ms-2 rounded-md border px-3 py-2 bg-green text-white"
+            <button v-if="signerList.length < 32" type="button" class="flex justify-start ms-2 rounded-md border px-3 py-2 bg-purple text-white"
                 @click="addMore()">
                 Add More
             </button>
@@ -56,6 +56,9 @@ export default {
 <style scoped>
     .bg-green {
         background-color: #00e56a;
-        color: #ffffff;
+    }
+
+    .bg-purple {
+        background-color: #753ee2;
     }
 </style>
