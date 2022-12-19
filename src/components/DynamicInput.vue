@@ -10,7 +10,7 @@
                 <div class="flex justify-start ms-2 mt-4">
                     <input v-model="signers.rAddress" placeholder="r address"
                         class="w-full py-2 border border-indigo-500 rounded" />
-                    <input v-model="signers.weight" placeholder="1"
+                    <input v-model="signers.weight" placeholder="weight"
                         class="w-full py-2 border border-indigo-500 rounded" />
                     <button type="button" class="ms-2 rounded-md border px-3 py-2 bg-warning text-white"
                         @click="remove(index)" v-show="index != 0">
