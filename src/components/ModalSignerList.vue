@@ -101,11 +101,11 @@ export default {
                 if(!this.validateAddress(element.address)) {
                     this.errors.push('invalid rAddress')
                 }
-                if (typeof (element.weight * 1) !== 'number' || element.weight < 0) {
+                if (typeof (element.weight * 1) !== 'number' || (element.weight * 1) < 0) {
                     this.errors.push('invalid weight')
                 }
             }
-            if (typeof (this.quorum * 1) !== 'number' || this.quorum < 0) {
+            if (typeof (this.quorum * 1) !== 'number' || (element.quorum * 1) < 0) {
                 this.errors.push('invalid quorum')
             }
 
