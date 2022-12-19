@@ -83,7 +83,7 @@ export default {
         },
         async createSignerList() {
             console.log('data', this.signerList)
-            if(this.checkForm()) { return }
+            if(!this.checkForm()) { return }
 
             console.log('TODO -> createSignerList')
             this.pushSignerList()
