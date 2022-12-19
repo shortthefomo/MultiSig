@@ -119,6 +119,9 @@
             async removeMasterKey() {
                 console.log('remove master key')
             },
+            async restoreMasterKey() {
+
+            },
             async signerList(marker = undefined) {
                 let found = false
                 const payload = {
