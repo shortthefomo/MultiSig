@@ -11,7 +11,7 @@
                 <p>Add accounts to a signer list and assign then weights. Applying the signer list <em>grants access to the signatories</em> to sign any transaction for your account.</p>
                 <p>The composibility of signers is extensive, <strong>use this with extreme caution!</strong></p>
 
-                <p v-if="errors.length" class="text-warning">
+                <p v-if="errors.length" class="text-danger">
                     <b>Please correct the following error(s):</b>
                     <ul>
                         <li v-for="error in errors">{{ error }}</li>
