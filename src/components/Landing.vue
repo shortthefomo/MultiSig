@@ -127,6 +127,7 @@
         methods: {
             updateNewSignerList(value) {
                 this.newSignerList = value
+                console.log('updateNewSignerList', value)
             },
             async accountInfo() {
                 const payload = {
