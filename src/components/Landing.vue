@@ -90,9 +90,6 @@
                 ascending: false
             }
         },
-        updateNewSignerList(value) {
-            this.newSignerList = value
-        },
         async mounted() {
             console.log('landing mounted...')
             this.hasSignerList = await this.signerList()
@@ -128,6 +125,9 @@
             }
         },
         methods: {
+            updateNewSignerList(value) {
+                this.newSignerList = value
+            },
             async accountInfo() {
                 const payload = {
                     'id': 1,
