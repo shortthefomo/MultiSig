@@ -57,13 +57,8 @@
                     .then(d => {
                         // d (returned value) can be Error or return data:
                         console.log('scanQr response:', d instanceof Error ? d.message : d)
-                        
                     })
                     .catch(e => console.log('Error:', e.message))
-
-                xapp.on('qr', function (data) {
-                    console.log('QR scanned / cancelled', data)
-                })
             },
             async getStoreage() {
 			    const storageGet = await this.Sdk.storage.get()
