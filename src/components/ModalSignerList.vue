@@ -123,8 +123,6 @@ export default {
             if(!this.checkForm()) { return }
 
             await this.pushSignerList()
-            await this.pause(1000)
-            this.$emit('reloadData')
             this.modal.hide()
         },
         async removeSignerList() {
@@ -132,8 +130,6 @@ export default {
             console.log('data', this.signerList)
 
             await this.pushSignerList(true)
-            await this.pause(1000)
-            this.$emit('reloadData')
             this.modal.hide()
         },
         async pushSignerList(removeSigner = false) {
@@ -180,6 +176,7 @@ export default {
 
                 if (event.data.signed === true) {
                     console.log('Woohoo! The sign request was signed :)')
+                    self.$emit('reloadData')
                     return event.data
                 }
 
