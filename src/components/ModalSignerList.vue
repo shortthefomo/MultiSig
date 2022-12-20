@@ -60,7 +60,7 @@ const xapp = window.xAppSdk
 export default {
     name: "Create Signer List",
     props: ['client', 'Sdk', 'nodetype', 'identity', 'hasSignerList'],
-    emits: ['reloadData'],
+    // emits: ['reloadData'],
     data() {
         return {
             errors: [],
@@ -89,7 +89,7 @@ export default {
 
             console.log('TODO -> createSignerList')
             // await this.pushSignerList()
-            this.emit('reloadData')
+            this.$emit('reloadData')
             let myModal = document.getElementById(this.identity)
             console.log('myModal', myModal)
             myModal.hide()
