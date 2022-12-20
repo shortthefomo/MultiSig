@@ -103,6 +103,7 @@
         },
         methods: {
             async reloadData() {
+                console.log('reloading... DATA')
                 this.hasSignerList = await this.signerList()
                 await this.accountInfo()
             },
