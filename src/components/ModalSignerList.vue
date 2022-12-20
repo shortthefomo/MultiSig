@@ -81,10 +81,10 @@ export default {
             console.log('>>>>>>> hasSignerList', value)
             if (value) {
                 this.signerList = []
-                const list = this.$store.getters.getSignerList(0)
+                const lists = this.$store.getters.getSignerLists
                 console.log('list', list)
-                for (let index = 0; index < list.length; index++) {
-                    const element = list[index]
+                for (let index = 0; index < lists[0].length; index++) {
+                    const element = lists[0][index]
                     this.signerList.push({
                         address: element.Account,
                         weigth: element.SignerWeight
