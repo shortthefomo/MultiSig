@@ -90,10 +90,11 @@ export default {
             console.log('TODO -> createSignerList')
             // await this.pushSignerList()
             this.$emit('reloadData')
-            let myModal = document.getElementById(this.identity)
+            let myModal = document.getElementById(this.identity).classList.toggle('show')
+            //document.getElementById('info').classList.toggle('show')
             console.log('identity', this.identity)
-            console.log('myModal', myModal)
-            myModal.hide()
+            // console.log('myModal', myModal)
+            // myModal.hide()
             
         },
         async pushSignerList() {
