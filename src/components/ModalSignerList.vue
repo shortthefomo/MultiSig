@@ -111,12 +111,19 @@ export default {
             console.log('emitting reloadData')
             this.$emit('reloadData')
         },
+        async pause(milliseconds = 1000) {
+            return new Promise(resolve =>  {
+                // console.log('pausing.... for new FX!')
+                setTimeout(resolve, milliseconds)
+            })
+        },
         async createSignerList() {
             console.log('createSignerList')
             console.log('data', this.signerList)
             if(!this.checkForm()) { return }
 
             await this.pushSignerList()
+            await this.pause(1000)
             this.$emit('reloadData')
             this.modal.hide()
         },
@@ -125,6 +132,7 @@ export default {
             console.log('data', this.signerList)
 
             await this.pushSignerList(true)
+            await this.pause(1000)
             this.$emit('reloadData')
             this.modal.hide()
         },
