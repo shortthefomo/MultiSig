@@ -88,7 +88,7 @@ export default {
                     console.log('element', element)
                     this.signerList.push({
                         address: element.SignerEntry.Account,
-                        weigth: element.SignerEntry.SignerWeight
+                        weight: element.SignerEntry.SignerWeight
                     })
                 }
             }
