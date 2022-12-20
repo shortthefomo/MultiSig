@@ -115,7 +115,7 @@ export default {
                 Account: this.$store.getters.getAccount,
                 Fee: String(fee),
                 Sequence: account_data.Sequence,
-                SignerQuorum: this.quorum * 1,
+                SignerQuorum: this.quorum,
                 SignerEntries
             }
 
@@ -157,10 +157,12 @@ export default {
             this.errors = []
             let sum = 0
             for (let index = 0; index < this.signerList.length; index++) {
+                this.signerList[index].weight = (this.signerList[index].weight * 1)
                 const element = this.signerList[index]
                 if(!this.validateAddress(element.address)) {
                     this.errors.push('invalid rAddress')
                 }
+                
                 const weight = (element.weight * 1)
                 console.log('weight', weight)
                 if (isNaN(weight) || weight < 1) {
@@ -173,7 +175,8 @@ export default {
                 }
             }
 
-            const quorum = (this.quorum * 1)
+            this.quorum = this.quorum * 1
+            const quorum = this.quorum
             if (isNaN(quorum) || quorum < 1) {
                 this.errors.push('invalid quorum')
                 console.log('1', isNaN(quorum))
