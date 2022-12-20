@@ -78,6 +78,7 @@ export default {
     },
     watch: {
         hasSignerList(value) {
+            console.log('>>>>>>> hasSignerList')
             if (value) {
                 this.signerList = []
                 const list = this.$store.getters.getSignerList
