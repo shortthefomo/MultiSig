@@ -115,7 +115,7 @@ export default {
                 Account: this.$store.getters.getAccount,
                 Fee: String(fee),
                 Sequence: account_data.Sequence,
-                SignerQuorum: this.quorum,
+                SignerQuorum: this.quorum*1,
                 SignerEntries
             }
 
