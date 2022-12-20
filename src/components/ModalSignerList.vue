@@ -89,9 +89,13 @@ export default {
             await this.pushSignerList()
         },
         async pushSignerList() {
-            const fee = String((3 + 1) + 40)  // (n +1) * fee
+            const server_info = await this.client.send({"id": 1, "command": "server_info"})
+            console.log('base fee', server_info.info.validated_ledger.base_fee_xrp)
+
+            const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
+            const fee = String((3 + 1) * base_fee)  // (n +1) * fee
             const account_data = this.$store.getters.getAccountData
-            console.log(await this.client.send({"id": 1, "command": "server_info"}))
+            
             const SignerEntries = []
             for (let index = 0; index < this.signerList.length; index++) {
                 const element = this.signerList[index]
@@ -105,7 +109,7 @@ export default {
             const payload = {
                 TransactionType: 'SignerListSet',
                 Account: this.$store.getters.getAccount,
-                Fee: String((3 + 1) + 40), // (n +1) * fee
+                Fee: String(fee),
                 Sequence: account_data.Sequence,
                 SignerQuorum: 3,
                 SignerEntries
