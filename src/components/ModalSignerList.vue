@@ -46,6 +46,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" @click="test">tesst</button>
                 <button v-if="hasSignerList" type="button" class="btn btn-secondary" @click="removeSignerList">Remove Signer List</button>
                 <button type="button" class="btn btn-green" @click="createSignerList">Apply </button>
             </div>
@@ -105,6 +106,10 @@ export default {
         },
         remove(index) {
             this.signerList.splice(index, 1)
+        },
+        test() {
+            console.log('emitting', reloadData)
+            this.$emit('reloadData')
         },
         async createSignerList() {
             console.log('createSignerList')
