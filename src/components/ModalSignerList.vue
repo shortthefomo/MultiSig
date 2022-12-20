@@ -82,7 +82,7 @@ export default {
             if (value) {
                 this.signerList = []
                 const lists = this.$store.getters.getSignerLists
-                console.log('list', list)
+                console.log('list', lists)
                 for (let index = 0; index < lists[0].length; index++) {
                     const element = lists[0][index]
                     this.signerList.push({
