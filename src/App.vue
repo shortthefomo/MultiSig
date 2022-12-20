@@ -54,7 +54,7 @@
         methods: {
             async xAppListeners() {
                 const self = this
-                xapp.on('qr', function (data) {
+                xapp.on('qr', async function (data) {
                     console.log('look uuid', data.qrContents.split('/')[4])
 
                     const x = await this.Sdk.payload.get(data.qrContents.split('/')[4])
