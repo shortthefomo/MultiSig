@@ -55,6 +55,8 @@
 </template>
   
 <script>
+const xapp = window.xAppSdk
+
 export default {
     name: "Create Signer List",
     props: ['client', 'Sdk', 'nodetype', 'identity', 'hasSignerList'],
