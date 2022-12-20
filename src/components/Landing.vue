@@ -75,13 +75,6 @@
             await this.accountInfo()
             
             this.isLoading = false
-
-            // let myModal = document.getElementById('staticBackdrop')
-            // let myInput = document.getElementById('staticBackdropLabel')
-
-            // myModal.addEventListener('shown.bs.modal', function () {
-            //     myInput.focus()
-            // })
         },
         computed: {
             ledger() {
