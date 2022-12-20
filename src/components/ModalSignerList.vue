@@ -115,12 +115,13 @@ export default {
                 Account: this.$store.getters.getAccount,
                 Fee: String(fee),
                 Sequence: account_data.Sequence,
-                SignerQuorum: this.quorum,
+                SignerQuorum: this.quorum * 1,
                 SignerEntries
             }
 
             console.log('payload', payload)
-            const request  = { txjson: payload}
+            const request  = { txjson: payload }
+            console.log('request', request)
             const subscription = await this.Sdk.payload.createAndSubscribe(request, async event => {
             console.log('New payload event:', event.data)
 
