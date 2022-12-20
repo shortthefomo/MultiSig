@@ -57,7 +57,7 @@
                 xapp.on('qr', async function (data) {
                     console.log('look uuid', data.qrContents.split('/')[4])
 
-                    const x = await this.Sdk.payload.get(data.qrContents.split('/')[4])
+                    const x = await self.Sdk.payload.get(data.qrContents.split('/')[4])
                     console.log('xxxx', x)
 
                     console.log('QR scanned / cancelled', data)
