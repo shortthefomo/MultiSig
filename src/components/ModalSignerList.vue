@@ -93,11 +93,13 @@ export default {
             let modal = document.getElementById(this.identity)
             modal.classList.toggle('show')
             modal.setAttribute('style', 'display:none;')
-
+            modal.setAttribute('aria-hidden', 'true')
+            modal.removeAttribute('aria-modal')
+            modal.removeAttribute('role')
             //document.getElementById('info').classList.toggle('show')
             console.log('identity', this.identity)
             // console.log('myModal', myModal)
-            myModal.hide()
+            // myModal.hide()
             
         },
         async pushSignerList() {
