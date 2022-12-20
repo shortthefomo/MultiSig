@@ -93,7 +93,7 @@ export default {
             if(!this.checkForm()) { return }
 
             console.log('TODO -> createSignerList')
-            // await this.pushSignerList()
+            await this.pushSignerList()
             this.$emit('reloadData')
             this.modal.hide()
         },
