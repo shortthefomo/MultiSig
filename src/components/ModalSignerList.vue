@@ -242,6 +242,10 @@ export default {
         background-color: #00e56a;
         color: #ffffff;
     }
+    .btn-yellow {
+        background-color: #ffc107;
+        color: #ffffff;
+    }
     .bg-green {
         background-color: #00e56a;
     }
