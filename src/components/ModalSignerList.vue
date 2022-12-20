@@ -46,7 +46,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-green" @click="createSignerList">Apply</button>
+                <button type="button" class="btn btn-yellow" @click="removeSignerList">Remove Signer List</button>
+                <button type="button" class="btn btn-green" @click="createSignerList">Apply </button>
             </div>
             </div>
         </div>
@@ -106,6 +107,7 @@ export default {
             this.signerList.splice(index, 1)
         },
         async createSignerList() {
+            console.log('createSignerList')
             console.log('data', this.signerList)
             if(!this.checkForm()) { return }
 
@@ -113,7 +115,15 @@ export default {
             this.$emit('reloadData')
             this.modal.hide()
         },
-        async pushSignerList() {
+        async removeSignerList() {
+            console.log('removeSignerList')
+            console.log('data', this.signerList)
+
+            await this.pushSignerList()
+            this.$emit('reloadData')
+            this.modal.hide()
+        },
+        async pushSignerList(removeSigner = false) {
             const server_info = await this.client.send({"id": 1, "command": "server_info"})
             console.log('base fee', server_info.info.validated_ledger.base_fee_xrp)
 
@@ -140,8 +150,11 @@ export default {
                 Account: this.$store.getters.getAccount,
                 Fee: String(fee),
                 Sequence: account_data.Sequence,
-                SignerQuorum: this.quorum,
-                SignerEntries
+                SignerQuorum: (removeSigner) ? 0 : this.quorum,
+            }
+
+            if (!removeSigner) {
+                payload['SignerEntries'] = SignerEntries
             }
 
             console.log('payload', payload)
