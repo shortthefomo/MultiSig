@@ -61,12 +61,7 @@
                     xapp.openSignRequest({ 'uuid': data.qrContents.split('/')[4] })
                         .then(d => {
                             // d (returned value) can be Error or return data:
-                            if (d instanceof Error) {
-                                console.log('openSignRequest response:', d.message)
-                            }
-                            else {
-                                console.log('openSignRequest response:', d)
-                            }
+                            console.log('openSignRequest response:', d instanceof Error ? d.message : d)
                         })
                         .catch(e => console.log('Error:', e.message))
                 })
@@ -79,12 +74,7 @@
                 xapp.scanQr()
                     .then(d => {
                         // d (returned value) can be Error or return data:
-                        if (d instanceof Error) {
-                            console.log('openSignRequest response:', d.message)
-                        }
-                        else {
-                            console.log('openSignRequest response:', d)
-                        }
+                        console.log('scanQr response:', d instanceof Error ? d.message : d)
                         if (!(d instanceof Error)) {
                             //console.log('look uuid', d.message.qrContents.split('/'))
                         }
@@ -160,12 +150,7 @@
                         xapp.close({ refreshEvents: true })
                             .then(d => {
                                 // d (returned value) can be Error or return data:
-                                if (d instanceof Error) {
-                                    console.log('openSignRequest response:', d.message)
-                                }
-                                else {
-                                    console.log('openSignRequest response:', d)
-                                }
+                                console.log('close response:', d instanceof Error ? d.message : d)
                             })
                             .catch(e => console.log('Error:', e.message))
                         return false
@@ -176,12 +161,7 @@
                 xapp.openSignRequest({ uuid: subscription.created.uuid })
                     .then(d => {
                         // d (returned value) can be Error or return data:
-                        if (d instanceof Error) {
-                            console.log('openSignRequest response:', d.message)
-                        }
-                        else {
-                            console.log('openSignRequest response:', d)
-                        }
+                        console.log('openSignRequest response:', d instanceof Error ? d.message : d)
                     })
                     .catch(e => console.log('Error:', e.message))
             },
