@@ -92,10 +92,11 @@ export default {
             console.log('data', this.signerList)
             if(!this.checkForm()) { return }
 
-            console.log('TODO -> createSignerList')
+            console.log('start -> createSignerList')
             await this.pushSignerList()
             this.$emit('reloadData')
             this.modal.hide()
+            console.log('DONE -> createSignerList')
         },
         async pushSignerList() {
             const server_info = await this.client.send({"id": 1, "command": "server_info"})
