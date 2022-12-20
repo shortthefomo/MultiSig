@@ -139,7 +139,13 @@ export default {
         xapp.openSignRequest({ uuid: subscription.created.uuid })
             .then(d => {
                 // d (returned value) can be Error or return data:
-                console.log('openSignRequest response:', d instanceof Error ? d.message : d)
+                if (d instanceof Error) {
+                    console.log('openSignRequest response:', d.message)
+                }
+                else {
+                    console.log('openSignRequest response:', d)
+                }
+                
             })
             .catch(e => console.log('Error:', e.message))
         },
