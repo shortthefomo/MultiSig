@@ -155,6 +155,7 @@
                 for (let index = 0; index < res.account_objects.length; index++) {
                     const element = res.account_objects[index]
                     if (element.LedgerEntryType === 'SignerList') {
+                        console.log('setSignerList element', element)
                         this.$store.dispatch('setSignerList', element)
                         found = true
                     }
