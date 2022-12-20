@@ -67,17 +67,30 @@ export default {
             modal: null,
             errors: [],
             quorum: '',
-            signerList: [
-                {
-                    address: '',
-                    weight: ''
-                },
-            ],
+            signerList: [{
+                address: '',
+                weight: ''
+            }],
         }
     },
     mounted() {
         this.modal = new Modal(this.$refs[this.identity + 'Modal'])
-    }, 
+    },
+    watch: {
+        hasSignerList(value) {
+            if (value) {
+                this.signerList = []
+                const list = this.$store.getters.getSignerList
+                for (let index = 0; index < list.length; index++) {
+                    const element = list[index]
+                    this.signerList.push({
+                        address: element.Account,
+                        weigth: element.SignerWeight
+                    })
+                }
+            }
+        }
+    },
     methods: {
         addMore() {
             this.signerList.push({
