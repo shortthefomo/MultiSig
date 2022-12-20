@@ -91,6 +91,7 @@ export default {
                         weight: element.SignerEntry.SignerWeight
                     })
                 }
+                this.quorum = lists[0].SignerQuorum
             }
         }
     },
