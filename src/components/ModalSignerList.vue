@@ -86,12 +86,12 @@ export default {
             if(!this.checkForm()) { return }
 
             console.log('TODO -> createSignerList')
-            this.pushSignerList()
+            await this.pushSignerList()
         },
-        pushSignerList() {
+        async pushSignerList() {
             const fee = String((3 + 1) + 40)  // (n +1) * fee
             const account_data = this.$store.getters.getAccountData
-
+            console.log(await this.client.send({"id": 1, "command": "server_info"}))
             const SignerEntries = []
             for (let index = 0; index < this.signerList.length; index++) {
                 const element = this.signerList[index]
