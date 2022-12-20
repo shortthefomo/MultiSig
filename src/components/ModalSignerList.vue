@@ -1,6 +1,6 @@
 <template>
     <!-- Modal -->
-    <div class="modal fade" :id="identity" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="identity +'Label'" aria-hidden="true">
+    <div class="modal fade" :ref="identity + 'Modal'" :id="identity" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" :aria-labelledby="identity +'Label'" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
@@ -56,6 +56,7 @@
   
 <script>
 const xapp = window.xAppSdk
+import { Modal } from 'bootstrap'
 
 export default {
     name: "Create Signer List",
@@ -63,6 +64,7 @@ export default {
     // emits: ['reloadData'],
     data() {
         return {
+            modal: null,
             errors: [],
             quorum: '',
             signerList: [
@@ -73,6 +75,9 @@ export default {
             ],
         }
     },
+    mounted() {
+        this.modal = new Modal(this.$refs[this.identity + 'Modal'])
+    }, 
     methods: {
         addMore() {
             this.signerList.push({
@@ -90,17 +95,7 @@ export default {
             console.log('TODO -> createSignerList')
             // await this.pushSignerList()
             this.$emit('reloadData')
-            let modal = document.getElementById(this.identity)
-            modal.classList.toggle('show')
-            modal.setAttribute('style', 'display:none;')
-            modal.setAttribute('aria-hidden', 'true')
-            modal.removeAttribute('aria-modal')
-            modal.removeAttribute('role')
-            //document.getElementById('info').classList.toggle('show')
-            console.log('identity', this.identity)
-            // console.log('myModal', myModal)
-            // myModal.hide()
-            
+            this.modal.hide()
         },
         async pushSignerList() {
             const server_info = await this.client.send({"id": 1, "command": "server_info"})

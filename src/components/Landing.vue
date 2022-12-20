@@ -47,11 +47,7 @@
 <script>
 
     import { flagNames } from 'flagnames'
-    import { Buffer } from 'buffer'
-
     import ModalSignerList from "./ModalSignerList.vue"
-    import 'bootstrap/js/dist/modal'
-import { emit } from 'process'
 
     const xapp = window.xAppSdk
 
