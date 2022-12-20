@@ -61,6 +61,7 @@
                     xapp.openSignRequest({ 'uuid': data.qrContents.split('/')[4] })
                         .then(d => {
                             // d (returned value) can be Error or return data:
+                            console.log('ELVIS SCANNED A QR CODE')
                             console.log('openSignRequest response:', d instanceof Error ? d.message : d)
                         })
                         .catch(e => console.log('Error:', e.message))
