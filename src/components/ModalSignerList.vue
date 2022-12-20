@@ -46,7 +46,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-yellow" @click="removeSignerList">Remove Signer List</button>
+                <button type="button" class="btn btn-secondary" @click="removeSignerList">Remove Signer List</button>
                 <button type="button" class="btn btn-green" @click="createSignerList">Apply </button>
             </div>
             </div>
