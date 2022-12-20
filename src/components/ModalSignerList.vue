@@ -90,6 +90,10 @@ export default {
             console.log('TODO -> createSignerList')
             // await this.pushSignerList()
             this.emit('reloadData')
+            let myModal = document.getElementById(this.identity)
+            console.log('myModal', myModal)
+            myModal.hide()
+            
         },
         async pushSignerList() {
             const server_info = await this.client.send({"id": 1, "command": "server_info"})
