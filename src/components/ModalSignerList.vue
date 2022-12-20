@@ -27,9 +27,9 @@
                         </button>
                         <div v-for="(signers, index) in signerList" :key="index">
                             <div class="flex justify-start ms-2 mt-4">
-                                <input :id="index + 'rAddress'" v-model="signers.address" placeholder="r address" class="w-full py-2 border border-indigo-500 rounded" />
+                                <input :id="index + 'rAddress'" v-model="signers.address" placeholder="r address" class="mb-2 w-full py-2 border border-indigo-500 rounded" />
                                 <!-- <label class="form-check-label" :for="index + 'weight'"> rAddress</label> -->
-                                <input :id="index + 'weight'" v-model="signers.weight" placeholder="weight" class="w-full py-2 border border-indigo-500 rounded" />
+                                <input :id="index + 'weight'" v-model="signers.weight" placeholder="weight" class="mb-2 w-full py-2 border border-indigo-500 rounded" />
                                 <!-- <label class="form-check-label" :for="index + 'weight'"> Weight</label> -->
                                 <button type="button" class="ms-2 rounded-md border px-3 py-2 bg-warning text-white" @click="remove(index)" v-show="index != 0">
                                     Remove
