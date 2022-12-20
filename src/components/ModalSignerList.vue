@@ -57,7 +57,7 @@
 <script>
 export default {
     name: "Create Signer List",
-    props: ['client', 'Sdk', 'nodetype', 'identity'],
+    props: ['client', 'Sdk', 'nodetype', 'identity', 'hasSignerList'],
     emits: ['updateNewSignerList'],
     data() {
         return {
@@ -93,7 +93,11 @@ export default {
             console.log('base fee', server_info.info.validated_ledger.base_fee_xrp)
 
             const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
-            const fee = String((3 + 1) * base_fee)  // (n +1) * fee
+            let fee = String(base_fee)
+            if (this.hasSignerList) {
+                fee = String((3 + 1) * base_fee)  // (n +1) * fee
+            }
+            
             const account_data = this.$store.getters.getAccountData
             
             const SignerEntries = []

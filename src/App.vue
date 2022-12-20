@@ -37,7 +37,6 @@
                 timeout_socket: null,
                 reconnect_socket: 0,
                 pong: false,
-                ready: false,
                 components: {
                     Landing: false
                 },
