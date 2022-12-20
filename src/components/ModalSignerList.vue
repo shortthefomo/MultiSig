@@ -119,7 +119,7 @@ export default {
             console.log('removeSignerList')
             console.log('data', this.signerList)
 
-            await this.pushSignerList()
+            await this.pushSignerList(true)
             this.$emit('reloadData')
             this.modal.hide()
         },
