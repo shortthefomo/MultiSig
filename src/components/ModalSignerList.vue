@@ -115,10 +115,33 @@ export default {
                 Account: this.$store.getters.getAccount,
                 Fee: String(fee),
                 Sequence: account_data.Sequence,
-                SignerQuorum: 3,
+                SignerQuorum: this.quorum,
                 SignerEntries
             }
+
             console.log('payload', payload)
+
+            const subscription = await this.Sdk.payload.createAndSubscribe(request, async event => {
+            console.log('New payload event:', event.data)
+
+            if (event.data.signed === true) {
+                console.log('Woohoo! The sign request was signed :)')
+                return event.data
+            }
+
+            if (event.data.signed === false) {
+                console.log('The sign request was rejected :(')
+                return false
+            }
+        })
+        console.log('setSignerList', subscription)
+
+        xapp.openSignRequest({ uuid: subscription.created.uuid })
+            .then(d => {
+                // d (returned value) can be Error or return data:
+                console.log('openSignRequest response:', d instanceof Error ? d.message : d)
+            })
+            .catch(e => console.log('Error:', e.message))
         },
         validateAddress(address) {
             let ALLOWED_CHARS = 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz'
