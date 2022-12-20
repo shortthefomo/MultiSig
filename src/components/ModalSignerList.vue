@@ -91,6 +91,7 @@ export default {
             // await this.pushSignerList()
             this.$emit('reloadData')
             let myModal = document.getElementById(this.identity)
+            console.log('identity', this.identity)
             console.log('myModal', myModal)
             myModal.hide()
             
