@@ -108,7 +108,7 @@ export default {
             this.signerList.splice(index, 1)
         },
         test() {
-            console.log('emitting', reloadData)
+            console.log('emitting reloadData')
             this.$emit('reloadData')
         },
         async createSignerList() {
