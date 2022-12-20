@@ -139,6 +139,8 @@
                 console.log('TODO -> restoreMasterKey')
             },
             async signerList(marker = undefined) {
+                this.$store.dispatch('clearSignerList')
+
                 let found = false
                 const payload = {
                     'id': 2,
@@ -151,7 +153,7 @@
                     payload.marker = marker
                 }
                 let res = await this.client.send(payload)
-                console.log('signerList', res)
+                // console.log('signerList', res)
                 for (let index = 0; index < res.account_objects.length; index++) {
                     const element = res.account_objects[index]
                     if (element.LedgerEntryType === 'SignerList') {
@@ -165,7 +167,7 @@
                 }
 
                 if (found) {
-                    console.log('signerLists', this.$store.getters.getSignerLists)
+                    // console.log('signerLists', this.$store.getters.getSignerLists)
                     const signer_lists = this.$store.getters.getSignerLists
                     for (let index = 0; index < signer_lists.length; index++) {
                         const element = signer_lists[index]

@@ -22,6 +22,9 @@ export const AppStore = {
         setAccount({commit}, account) {
             commit('ACCOUNT', account)
         },
+        clearSignerList({commit}) {
+            commit('CLEAR_SIGNER_LIST')
+        },
         setSignerList({commit}, data) {
             commit('SIGNER_LIST', data)
         },
@@ -38,6 +41,9 @@ export const AppStore = {
         },
         ACCOUNT(state, account) {
             state.account = account
+        },
+        CLEAR_SIGNER_LIST(state) {
+            state.signer_lists = []
         },
         SIGNER_LIST(state, data) {
             if (!('SignerListID' in data)) { return }
