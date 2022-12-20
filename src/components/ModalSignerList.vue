@@ -81,7 +81,7 @@ export default {
             console.log('>>>>>>> hasSignerList', value)
             if (value) {
                 this.signerList = []
-                const list = this.$store.getters.getSignerList
+                const list = this.$store.getters.getSignerList(0)
                 console.log('list', list)
                 for (let index = 0; index < list.length; index++) {
                     const element = list[index]
