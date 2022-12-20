@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <ModalSignerList :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="createSignerList" :hasSignerList="hasSignerList" />
+    <ModalSignerList :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="createSignerList" :hasSignerList="hasSignerList" @reloadData="reloadData"/>
 
     <!-- <footer>
         <p class="h1 text-center">{{ledger}}</p>
@@ -51,6 +51,7 @@
 
     import ModalSignerList from "./ModalSignerList.vue"
     import 'bootstrap/js/dist/modal'
+import { emit } from 'process'
 
     const xapp = window.xAppSdk
 
@@ -105,6 +106,10 @@
             }
         },
         methods: {
+            async reloadData() {
+                this.hasSignerList = await this.signerList()
+                await this.accountInfo()
+            },
             async accountInfo() {
                 const payload = {
                     'id': 1,

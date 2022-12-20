@@ -60,7 +60,7 @@ const xapp = window.xAppSdk
 export default {
     name: "Create Signer List",
     props: ['client', 'Sdk', 'nodetype', 'identity', 'hasSignerList'],
-    emits: ['updateNewSignerList'],
+    emits: ['reloadData'],
     data() {
         return {
             errors: [],
@@ -88,7 +88,8 @@ export default {
             if(!this.checkForm()) { return }
 
             console.log('TODO -> createSignerList')
-            await this.pushSignerList()
+            // await this.pushSignerList()
+            this.emit('reloadData')
         },
         async pushSignerList() {
             const server_info = await this.client.send({"id": 1, "command": "server_info"})
@@ -124,27 +125,29 @@ export default {
             console.log('payload', payload)
             const request  = { txjson: payload }
             console.log('request', request)
+
+            const self = this
             const subscription = await this.Sdk.payload.createAndSubscribe(request, async event => {
-            console.log('New payload event:', event.data)
+                console.log('New payload event:', event.data)
 
-            if (event.data.signed === true) {
-                console.log('Woohoo! The sign request was signed :)')
-                return event.data
-            }
+                if (event.data.signed === true) {
+                    console.log('Woohoo! The sign request was signed :)')
+                    return event.data
+                }
 
-            if (event.data.signed === false) {
-                console.log('The sign request was rejected :(')
-                return false
-            }
-        })
-        console.log('setSignerList', subscription)
-
-        xapp.openSignRequest({ uuid: subscription.created.uuid })
-            .then(d => {
-                // d (returned value) can be Error or return data:
-                //log('openSignRequest response:', d instanceof Error ? d.message : d)
+                if (event.data.signed === false) {
+                    console.log('The sign request was rejected :(')
+                    return false
+                }
             })
-            .catch(e => console.log('Error:', e.message))
+            console.log('setSignerList', subscription)
+
+            xapp.openSignRequest({ uuid: subscription.created.uuid })
+                .then(d => {
+                    // d (returned value) can be Error or return data:
+                    log('openSignRequest response:', d instanceof Error ? d.message : d)
+                })
+                .catch(e => console.log('Error:', e.message))
         },
         validateAddress(address) {
             let ALLOWED_CHARS = 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz'
