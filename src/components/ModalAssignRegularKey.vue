@@ -30,7 +30,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-purple" @click="assignRegularKey">Rekey Account</button>
+                <button type="button" class="btn btn-purple" @click="assignRegularKey">Assign Regular Key</button>
             </div>
             </div>
         </div>
@@ -133,7 +133,10 @@ export default {
     .bg-green {
         background-color: #00e56a;
     }
-
+    .btn-purple {
+        background-color: #753ee2;
+        color: #ffffff;
+    }
     .bg-purple {
         background-color: #753ee2;
     }
