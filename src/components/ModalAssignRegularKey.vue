@@ -4,13 +4,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" :id="identity +'Label'">Assign Regualr Key</h5>
+                <h5 class="modal-title" :id="identity +'Label'">Assign Regular Key</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Create a new full access account in xumm via the +Account button. Record its rAddress and use that here.</p>
-                <p>Once this form has been completed and submitted, edit this account and change it to read only.</p>
-                <p>Settings->Accounts->(this account)-> choose read only.</p>
+                <p>The XRP Ledger allows an account to authorize a secondary key pair, called a <em><a href="cryptographic-keys.html">regular key pair</a></em>, to sign future transactions. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your <a href="accounts.html">account</a> and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)</p>
+                <ol>
+                    <li>create new account in xumm (full access)</li>
+                    <li><strong>after applying changes here</strong> change this account to read only</li>
+                </ol>
                 <br/>
                 <p v-if="errors.length" class="text-danger">
                     <b>Please correct the following error(s):</b>

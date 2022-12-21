@@ -124,6 +124,7 @@
                     this.masterKeyEnabled = false
                     console.log('masterkey dissabled')
                 }
+                //'lsfPasswordSpent'
             },
             async editSignerList(SignerListID) {
                 console.log('TODO -> editSignerList', SignerListID)
