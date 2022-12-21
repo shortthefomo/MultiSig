@@ -106,16 +106,16 @@
         methods: {
             regularKeyClass() {
                 // if (this.regularKey) {
-                //     return 'btn btn-green mb-2 me-2'
+                //     return 'bg-green rounded-3 mb-2 me-2'
                 // }
-                return 'bg-secondary mb-2 me-2'
+                return 'bg-light rounded-3 mb-2 me-2'
             },
             signerListClass() {
                 // if (this.signerList.length < 1) {
-                //     return 'btn btn-secondary mb-2 me-2'
+                //     return 'bg-light rounded-3 mb-2 me-2'
                 // }
                 
-                return 'bg-purple mb-2 me-2'
+                return 'bg-purple rounded-3 mb-2 me-2'
             },
             async reloadData() {
                 console.log('reloading... DATA')
