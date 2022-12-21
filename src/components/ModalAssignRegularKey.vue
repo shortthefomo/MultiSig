@@ -63,7 +63,7 @@ export default {
             const payload = {
                 TransactionType: 'SetRegularKey',
                 Account: this.$store.getters.getAccount,
-                RegularKey: RegularKey,
+                RegularKey: this.RegularKey,
             }
             console.log('payload', payload)
             const request  = { txjson: payload }
