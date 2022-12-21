@@ -5,19 +5,23 @@
             <p class="p-2 mb-2 bg-warning">
                 <small class="text-wrap">{{account}}</small>
                 <sup>
-                    <i v-if="masterKeyEnabled && signer_lists.length == 0" class="master-key position-absolute top-0 start-0 h1 bi bi-patch-check-fill text-dark"></i>
+                    <i v-if="masterKey && signer_lists.length == 0" class="master-key position-absolute top-0 start-0 h1 bi bi-patch-check-fill text-dark"></i>
                     <i v-else class="master-key position-absolute top-0 start-0 h1 bi bi-patch-minus-fill text-dark"></i>
                 </sup>
             </p>
             
-            <div class="col-md-8 fs-4">                
+            <div class="col-md-8 fs-4">  
                 <p class="text-muted text-end fs-6"><span class="fancy-font">multisig</span>  by three</p>
             </div>
+            <div class="col-md-8 fs-4">
+                <div :class="regularKeyClass"><i class="bi bi-list-check"></i></div>
+                <div :class="signerListClass"><i class="bi bi-key-fill"></i></div>
+            </div>
             <p>
-                <a v-if="masterKeyEnabled && signer_lists.length > 0" class="btn btn-pink mb-2" @click="removeMasterKey" role="button" id="remove-master">Remove Master Key</a>
+                <a v-if="masterKey && signer_lists.length > 0" class="btn btn-pink mb-2" @click="removeMasterKey" role="button" id="remove-master">Remove Master Key</a>
                 <a v-else-if="signer_lists.length > 0" class="btn btn-pink mb-2" @click="restoreMasterKey" role="button" id="restore-master">Restore Master Key</a>
-                <button v-if="signer_lists.length == 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList"><i class="bi bi-list-check"></i></button>
-                <button type="button" class="btn btn-purple mb-2 me-2" data-bs-toggle="modal" data-bs-target="#assignRegularKey"><i class="bi bi-key-fill"></i></button>
+                <button v-if="signer_lists.length == 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList"></button>
+                <button type="button" class="btn btn-purple mb-2 me-2" data-bs-toggle="modal" data-bs-target="#assignRegularKey"></button>
             </p>
         </div>
     </div>
@@ -62,7 +66,8 @@
         },
         data() {
             return {
-                masterKeyEnabled: true, 
+                masterKey: true, 
+                regularKey: false, 
                 hasSignerList: false,
                 isLoading: true,
                 signerLists: [],
@@ -98,6 +103,19 @@
             }
         },
         methods: {
+            regularKeyClass() {
+                if (this.regularKey) {
+                    return 'btn btn-green mb-2 me-2'
+                }
+                return 'btn btn-secondary mb-2 me-2'
+            },
+            signerListClass() {
+                if (this.signerList.length < 1) {
+                    return 'btn btn-secondary mb-2 me-2'
+                }
+                
+                return 'btn btn-purple mb-2 me-2'
+            },
             async reloadData() {
                 console.log('reloading... DATA')
                 this.hasSignerList = await this.signerList()
@@ -121,10 +139,13 @@
 
                 // check if master key enabled.
                 if (flags.includes('lsfDisableMaster')) {
-                    this.masterKeyEnabled = false
+                    this.masterKey = false
                     console.log('masterkey dissabled')
                 }
-                //'lsfPasswordSpent'
+                // regular key set
+                if (flags.includes('lsfPasswordSpent')) {
+                    this.regularKey = true
+                }
             },
             async editSignerList(SignerListID) {
                 console.log('TODO -> editSignerList', SignerListID)
