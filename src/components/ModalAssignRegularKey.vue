@@ -31,7 +31,7 @@
 <script>
 const xapp = window.xAppSdk
 import { Modal } from 'bootstrap'
-
+import { Buffer } from 'buffer'
 import lib from 'xrpl-accountlib'
 
 export default {
