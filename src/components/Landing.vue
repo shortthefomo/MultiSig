@@ -111,7 +111,7 @@
                 return 'bg-white rounded-3 p-2 mb-2 me-2'
             },
             signerListClass() {
-                if (this.signerList.length < 1) {
+                if (this.signerList.length > 0) {
                     return 'bg-white rounded-3 p-2 mb-2 me-2'
                 }
                 
