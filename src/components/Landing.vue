@@ -17,8 +17,8 @@
                 <p class="text-muted text-end fs-6"><span class="fancy-font">siglists</span>  by three</p>
             </div>
             <p>
-                <a v-if="masterKey && signer_lists.length > 0" class="btn btn-pink mb-2" @click="removeMasterKey" role="button" id="remove-master" dissabled>Remove Master Key</a>
-                <a v-else-if="signer_lists.length > 0" class="btn btn-pink mb-2" @click="restoreMasterKey" role="button" id="restore-master" dissabled>Restore Master Key</a>
+                <button v-if="masterKey && signer_lists.length > 0" type="button" class="btn btn-pink mb-2" @click="removeMasterKey" dissabled>Remove Master Key</button>
+                <button v-else-if="signer_lists.length > 0" type="button" class="btn btn-pink mb-2" @click="restoreMasterKey" dissabled>Restore Master Key</button>
                 <button v-if="signer_lists.length == 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Create Signer List</button>
                 <button v-else-if="signer_lists.length > 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Edit Signer List</button>
                 <button type="button" class="btn btn-purple mb-2 me-2" data-bs-toggle="modal" data-bs-target="#assignRegularKey">Assign Regular Key</button>
