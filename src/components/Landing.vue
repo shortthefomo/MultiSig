@@ -3,8 +3,8 @@
         <div class="container-fluid py-3">
             <p class="h1 text-start">{{ledger}}</p>
             <div class="col-md-8 fs-4 mb-3">
-                <span :class="signerListClass()"><i class="bi bi-list-check"></i></span>
-                <span :class="regularKeyClass()"><i class="bi bi-key-fill"></i></span>
+                <span :class="signerListClass"><i class="bi bi-list-check"></i></span>
+                <span :class="regularKeyClass"><i class="bi bi-key-fill"></i></span>
             </div>
             <p class="p-2 mb-2 bg-warning">
                 <small class="text-wrap">{{account}}</small>
@@ -85,6 +85,18 @@
             this.isLoading = false
         },
         computed: {
+            regularKeyClass() {
+                if (this.regularKey) {
+                    return 'bg-dark text-white rounded-3 p-2 mb-2 me-2'
+                }
+                return 'bg-white rounded-3 p-2 mb-2 me-2'
+            },
+            signerListClass() {
+                if (this.signerList.length > 0) {
+                    return 'bg-dark text-white rounded-3 p-2 mb-2 me-2'
+                }
+                return 'bg-white rounded-3 p-2 mb-2 me-2'
+            },
             ledger() {
                 return this.$store.getters.getLedger
             },
@@ -103,18 +115,6 @@
             }
         },
         methods: {
-            regularKeyClass() {
-                if (this.regularKey) {
-                    return 'bg-dark text-white rounded-3 p-2 mb-2 me-2'
-                }
-                return 'bg-white rounded-3 p-2 mb-2 me-2'
-            },
-            signerListClass() {
-                if (this.signerList.length > 0) {
-                    return 'bg-dark text-white rounded-3 p-2 mb-2 me-2'
-                }
-                return 'bg-white rounded-3 p-2 mb-2 me-2'
-            },
             async reloadData() {
                 console.log('reloading... DATA')
                 this.hasSignerList = await this.signerList()
