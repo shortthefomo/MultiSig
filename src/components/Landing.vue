@@ -14,14 +14,14 @@
                 <p class="text-muted text-end fs-6"><span class="fancy-font">multisig</span>  by three</p>
             </div>
             <div class="col-md-8 fs-4">
-                <button :class="regularKeyClass"><i class="bi bi-list-check" dissabled></i></button>
-                <button :class="signerListClass"><i class="bi bi-key-fill" dissabled></i></button>
+                <div :class="regularKeyClass"><i class="bi bi-list-check"></i></div>
+                <div :class="signerListClass"><i class="bi bi-key-fill"></i></div>
             </div>
             <p>
                 <a v-if="masterKey && signer_lists.length > 0" class="btn btn-pink mb-2" @click="removeMasterKey" role="button" id="remove-master">Remove Master Key</a>
                 <a v-else-if="signer_lists.length > 0" class="btn btn-pink mb-2" @click="restoreMasterKey" role="button" id="restore-master">Restore Master Key</a>
                 <button v-if="signer_lists.length == 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Create Signer List</button>
-                <button v-if="signer_lists.length > 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Edit Signer List</button>
+                <button v-else-if="signer_lists.length > 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Edit Signer List</button>
                 <button type="button" class="btn btn-purple mb-2 me-2" data-bs-toggle="modal" data-bs-target="#assignRegularKey">Assign Regular Key</button>
             </p>
         </div>
