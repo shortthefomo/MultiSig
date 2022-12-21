@@ -2,6 +2,10 @@
     <div class="p-2 mb-2 bg-light rounded-3">
         <div class="container-fluid py-3">
             <p class="h1 text-start">{{ledger}}</p>
+            <div class="col-md-8 fs-4 mb-3">
+                <span :class="signerListClass()"><i class="bi bi-list-check"></i></span>
+                <span :class="regularKeyClass()"><i class="bi bi-key-fill"></i></span>
+            </div>
             <p class="p-2 mb-2 bg-warning">
                 <small class="text-wrap">{{account}}</small>
                 <sup>
@@ -9,10 +13,6 @@
                     <i v-else class="master-key position-absolute top-0 start-0 h1 bi bi-patch-minus-fill text-dark"></i>
                 </sup>
             </p>
-            <div class="col-md-8 fs-4">
-                <span :class="signerListClass()"><i class="bi bi-list-check"></i></span>
-                <span :class="regularKeyClass()"><i class="bi bi-key-fill"></i></span>
-            </div>
             <div class="col-md-8 fs-4 mb-5">  
                 <p class="text-muted text-end fs-6"><span class="fancy-font">siglists</span>  by three</p>
             </div>
