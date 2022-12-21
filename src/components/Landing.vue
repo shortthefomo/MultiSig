@@ -126,7 +126,7 @@
                 console.log('TODO -> editSignerList', SignerListID)
             },
             async removeMasterKey() {
-                console.log('TODO -> removeMasterKey')
+                console.log('removeMasterKey')
                 const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
                 const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
                 const account_data = this.$store.getters.getAccountData
@@ -170,6 +170,45 @@
             },
             async restoreMasterKey() {
                 console.log('TODO -> restoreMasterKey')
+                const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
+                const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
+                const account_data = this.$store.getters.getAccountData
+
+                const asfDisableMaster = 4
+                const payload = {
+                    TransactionType: 'AccountSet',
+                    Account: this.$store.getters.getAccount,
+                    Fee: String(base_fee),
+                    Sequence: account_data.Sequence
+                }
+
+                console.log('payload', payload)
+                const request  = { txjson: payload }
+                console.log('request', request)
+
+                const self = this
+                const subscription = await this.Sdk.payload.createAndSubscribe(request, async event => {
+                    console.log('New payload event:', event.data)
+
+                    if (event.data.signed === true) {
+                        console.log('Woohoo! The sign request was signed :)')
+                        self.reloadData()
+                        return event.data
+                    }
+
+                    if (event.data.signed === false) {
+                        console.log('The sign request was rejected :(')
+                        return false
+                    }
+                })
+                console.log('setSignerList', subscription)
+
+                xapp.openSignRequest({ uuid: subscription.created.uuid })
+                    .then(d => {
+                        // d (returned value) can be Error or return data:
+                        console.log('openSignRequest response:', d instanceof Error ? d.message : d)
+                    })
+                    .catch(e => console.log('Error:', e.message))
             },
             async signerList(marker = undefined) {
                 this.$store.dispatch('clearSignerList')
