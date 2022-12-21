@@ -117,7 +117,7 @@
                 console.log('flags', flags)
 
                 // check if master key enabled.
-                if ('lsfDisableMaster' in flags) {
+                if (flags.includes('lsfDisableMaster')) {
                     this.masterKeyEnabled = false
                     console.log('masterkey dissabled')
                 }
