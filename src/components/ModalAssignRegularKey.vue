@@ -32,7 +32,7 @@
 const xapp = window.xAppSdk
 import { Modal } from 'bootstrap'
 
-const lib = require('xrpl-accountlib')
+import lib from 'xrpl-accountlib'
 
 export default {
     name: "Create Signer List",
