@@ -129,13 +129,13 @@ export default {
             this.modal.hide()
         },
         async pushSignerList(removeSigner = false) {
-            const server_info = await this.client.send({"id": 1, "command": "server_info"})
+            const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
             console.log('base fee', server_info.info.validated_ledger.base_fee_xrp)
 
             const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
-            let fee = String(base_fee)
+            let fee = base_fee
             if (this.hasSignerList) {
-                fee = String((3 + 1) * base_fee)  // (n +1) * fee
+                fee = ((3 + 1) * base_fee)  // (n +1) * fee
             }
             
             const account_data = this.$store.getters.getAccountData
