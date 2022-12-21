@@ -31,8 +31,8 @@
 <script>
 const xapp = window.xAppSdk
 import { Modal } from 'bootstrap'
-import { Buffer } from 'buffer'
-import lib from 'xrpl-accountlib'
+// import { Buffer } from 'buffer'
+// import lib from 'xrpl-accountlib'
 
 export default {
     name: "Create Signer List",
@@ -46,7 +46,7 @@ export default {
     },
     mounted() {
         this.modal = new Modal(this.$refs[this.identity + 'Modal'])
-        this.accountSetup()
+        // this.accountSetup()
     },
     watch: {
         hasSignerList(value) {
