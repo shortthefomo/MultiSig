@@ -8,7 +8,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>The XRP Ledger allows an account to authorize a secondary key pair, called a <em><a href="cryptographic-keys.html">regular key pair</a></em>, to sign future transactions. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your <a href="accounts.html">account</a> and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)</p>
+                <p>The XRP Ledger allows an account to authorize a secondary key pair, called a <em>regular key pair</em>, to sign future transactions. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your <em>account</em> and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)</p>
+                <p>Read more: <a href="https://xrpl.org/assign-a-regular-key-pair.html" target="_blank">assign a regular key pair</a> at xrpl.org</p>
                 <ol>
                     <li>create new account in xumm (full access)</li>
                     <li><strong>after applying changes here</strong> change this account to read only</li>
