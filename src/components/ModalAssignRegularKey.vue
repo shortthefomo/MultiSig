@@ -30,7 +30,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-purple" @click="assignRegularKey">Assign Regular Key</button>
+                <button type="button" class="btn btn-purple" @click="assignRegularKey">Assign Key</button>
             </div>
             </div>
         </div>
