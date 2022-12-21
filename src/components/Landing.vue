@@ -87,15 +87,15 @@
         computed: {
             regularKeyClass() {
                 if (this.regularKey) {
-                    return 'bg-dark text-white rounded-3 p-2 mb-2 me-2'
+                    return 'bg-dark text-white rounded-3 p-1 mb-1 me-2'
                 }
-                return 'bg-white rounded-3 p-2 mb-2 me-2'
+                return 'bg-white rounded-3 p-1 mb-1 me-2'
             },
             signerListClass() {
                 if (this.hasSignerList) {
-                    return 'bg-dark text-white rounded-3 p-2 mb-2 me-2'
+                    return 'bg-dark text-white rounded-3 p-1 mb-1 me-2'
                 }
-                return 'bg-white rounded-3 p-2 mb-2 me-2'
+                return 'bg-white rounded-3 p-1 mb-1 me-2'
             },
             ledger() {
                 return this.$store.getters.getLedger
