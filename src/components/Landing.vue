@@ -105,17 +105,17 @@
         },
         methods: {
             regularKeyClass() {
-                if (this.regularKey) {
-                    return 'btn btn-green mb-2 me-2'
-                }
-                return 'btn btn-secondary mb-2 me-2'
+                // if (this.regularKey) {
+                //     return 'btn btn-green mb-2 me-2'
+                // }
+                return 'bg-secondary mb-2 me-2'
             },
             signerListClass() {
-                if (this.signerList.length < 1) {
-                    return 'btn btn-secondary mb-2 me-2'
-                }
+                // if (this.signerList.length < 1) {
+                //     return 'btn btn-secondary mb-2 me-2'
+                // }
                 
-                return 'btn btn-purple mb-2 me-2'
+                return 'bg-purple mb-2 me-2'
             },
             async reloadData() {
                 console.log('reloading... DATA')
@@ -313,7 +313,12 @@
         background-color: #00e56a;
         color: #ffffff;
     }
-
+    .bg-purple {
+        background-color: #753ee2;
+    }
+    .bg-green {
+        background-color: #00e56a;
+    }
     .open-sign {
         background: url('/public/apple-touch-icon.png');
         background-repeat: no-repeat;
