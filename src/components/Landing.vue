@@ -17,6 +17,7 @@
                 <a v-if="masterKeyEnabled && signer_lists.length > 0" class="btn btn-pink mb-2" @click="removeMasterKey" role="button" id="remove-master">Remove Master Key</a>
                 <a v-else-if="signer_lists.length > 0" class="btn btn-pink mb-2" @click="restoreMasterKey" role="button" id="restore-master">Restore Master Key</a>
                 <button v-if="signer_lists.length == 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Create Signer List</button>
+                <button type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Assign Regular Key</button>
             </p>
         </div>
     </div>
@@ -37,6 +38,7 @@
     </div>
 
     <ModalSignerList :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="createSignerList" :hasSignerList="hasSignerList" @reloadData="reloadData"/>
+    <ModalAssignRegularKey :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="assignRegularKey" @reloadData="reloadData"/>
 
     <!-- <footer>
         <p class="h1 text-center">{{ledger}}</p>
@@ -47,8 +49,8 @@
 <script>
 
     import { flagNames } from 'flagnames'
-    import ModalSignerList from "./ModalSignerList.vue"
-
+    import ModalSignerList from './ModalSignerList.vue'
+    import ModalAssignRegularKey from './ModalAssignRegularKey.vue'
     const xapp = window.xAppSdk
 
     export default {
@@ -56,6 +58,7 @@
         props: ['client', 'Sdk', 'nodetype'],
         components: {
             ModalSignerList,
+            ModalAssignRegularKey
         },
         data() {
             return {
@@ -170,45 +173,6 @@
             },
             async restoreMasterKey() {
                 console.log('TODO -> restoreMasterKey')
-                const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
-                const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
-                const account_data = this.$store.getters.getAccountData
-
-                const asfDisableMaster = 4
-                const payload = {
-                    TransactionType: 'AccountSet',
-                    Account: this.$store.getters.getAccount,
-                    Fee: String(base_fee),
-                    Sequence: account_data.Sequence
-                }
-
-                console.log('payload', payload)
-                const request  = { txjson: payload }
-                console.log('request', request)
-
-                const self = this
-                const subscription = await this.Sdk.payload.createAndSubscribe(request, async event => {
-                    console.log('New payload event:', event.data)
-
-                    if (event.data.signed === true) {
-                        console.log('Woohoo! The sign request was signed :)')
-                        self.reloadData()
-                        return event.data
-                    }
-
-                    if (event.data.signed === false) {
-                        console.log('The sign request was rejected :(')
-                        return false
-                    }
-                })
-                console.log('setSignerList', subscription)
-
-                xapp.openSignRequest({ uuid: subscription.created.uuid })
-                    .then(d => {
-                        // d (returned value) can be Error or return data:
-                        console.log('openSignRequest response:', d instanceof Error ? d.message : d)
-                    })
-                    .catch(e => console.log('Error:', e.message))
             },
             async signerList(marker = undefined) {
                 this.$store.dispatch('clearSignerList')
