@@ -8,7 +8,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>TODO</p>
+                <p>Create a new full access account in xumm via the +Account button. Record its rAddress and use that here.</p>
+                <p>Once this form has been completed and submitted, edit this account and change it to read only.</p>
+                <p>Settings->Accounts->(this account)-> choose read only.</p>
                 <br/>
                 <p v-if="errors.length" class="text-danger">
                     <b>Please correct the following error(s):</b>
@@ -16,7 +18,13 @@
                         <li v-for="error in errors">{{ error }}</li>
                     </ul>
                 </p>
-
+                <div class="regular-key-from">
+                    <div class="w-full mt-4 p-10">
+                        <div class="flex justify-start ms-2 mt-4">
+                            <input id="rAddress" v-model="RegularKey" placeholder="r address" class="mb-2 w-full py-2 border border-indigo-500 rounded" />
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -31,8 +39,6 @@
 <script>
 const xapp = window.xAppSdk
 import { Modal } from 'bootstrap'
-// import { Buffer } from 'buffer'
-// import lib from 'xrpl-accountlib'
 
 export default {
     name: "Create Signer List",
@@ -40,51 +46,52 @@ export default {
     emits: ['reloadData'],
     data() {
         return {
+            RegularKey: null,
             modal: null,
             errors: [],
         }
     },
     mounted() {
         this.modal = new Modal(this.$refs[this.identity + 'Modal'])
-        // this.accountSetup()
-    },
-    watch: {
-        hasSignerList(value) {
-            console.log('>>>>>>> hasSignerList', value)
-            if (value) {
-                this.signerList = []
-                const lists = this.$store.getters.getSignerLists
-                console.log('list', lists)
-                for (let index = 0; index < lists[0].SignerEntries.length; index++) {
-                    const element = lists[0].SignerEntries[index]
-                    console.log('element', element)
-                    this.signerList.push({
-                        address: element.SignerEntry.Account,
-                        weight: element.SignerEntry.SignerWeight
-                    })
-                }
-                this.quorum = lists[0].SignerQuorum
-            }
-        }
     },
     methods: {
-        addMore() {
-            this.signerList.push({
-                address: '',
-                weight: ''
-            })
-        },
-        remove(index) {
-            this.signerList.splice(index, 1)
-        },
-        accountSetup() {
-            const familySeed = lib.generate.familySeed()
-            const data = JSON.stringify(familySeed)
-            console.log('New key pair generated.')
-            console.log('familySeed', familySeed)
-        },
-        assignRegularKey() {
+        async assignRegularKey() {
             // https://xrpl.org/assign-a-regular-key-pair.html
+            if (RegularKey == null) { return }
+            if (this.checkForm() == false) { return } 
+
+            const payload = {
+                TransactionType: 'SetRegularKey',
+                Account: this.$store.getters.getAccount,
+                RegularKey: RegularKey,
+            }
+            console.log('payload', payload)
+            const request  = { txjson: payload }
+            console.log('request', request)
+
+            const self = this
+            const subscription = await this.Sdk.payload.createAndSubscribe(request, async event => {
+                console.log('New payload event:', event.data)
+
+                if (event.data.signed === true) {
+                    console.log('Woohoo! The sign request was signed :)')
+                    self.$emit('reloadData')
+                    return event.data
+                }
+
+                if (event.data.signed === false) {
+                    console.log('The sign request was rejected :(')
+                    return false
+                }
+            })
+            console.log('SetRegularKey', subscription)
+
+            xapp.openSignRequest({ uuid: subscription.created.uuid })
+                .then(d => {
+                    // d (returned value) can be Error or return data:
+                    console.log('openSignRequest response:', d instanceof Error ? d.message : d)
+                })
+                .catch(e => console.log('Error:', e.message))
         },
         validateAddress(address) {
             let ALLOWED_CHARS = 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz'
@@ -97,38 +104,11 @@ export default {
         },
         checkForm() {
             this.errors = []
-            let sum = 0
-            for (let index = 0; index < this.signerList.length; index++) {
-                this.signerList[index].weight = (this.signerList[index].weight * 1)
-                const element = this.signerList[index]
-                if(!this.validateAddress(element.address)) {
-                    this.errors.push('invalid rAddress')
-                }
-                
-                const weight = (element.weight * 1)
-                console.log('weight', weight)
-                if (isNaN(weight) || weight < 1) {
-                    this.errors.push('invalid weight')
-                    console.log('1', isNaN(weight))
-                    console.log('2', weight < 1)
-                }
-                else {
-                    sum += weight
-                }
+            
+            if (!this.validateAddress(this.RegularKey)) {
+                this.errors.push('invalid rAddress')
             }
 
-            this.quorum = this.quorum * 1
-            const quorum = this.quorum
-            if (isNaN(quorum) || quorum < 1) {
-                this.errors.push('invalid quorum')
-                console.log('1', isNaN(quorum))
-                console.log('2', quorum < 1)
-            }
-            else {
-                if (quorum < sum) {
-                    this.errors.push('quorum must be greater than or equal to all weights summed')
-                }
-            }
             if (this.errors.length > 0) {
                 return false
             }

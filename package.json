@@ -22,7 +22,6 @@
         "vue-numerals": "^4.0.6",
         "vue-router": "^4.0.10",
         "vuex": "^4.0.2",
-        "xrpl-accountlib": "^1.6.1",
         "xrpl-client": "^1.9.5",
         "xumm-sdk": "^1.5.0"
     },
