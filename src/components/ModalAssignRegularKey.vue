@@ -57,7 +57,7 @@ export default {
     methods: {
         async assignRegularKey() {
             // https://xrpl.org/assign-a-regular-key-pair.html
-            if (RegularKey == null) { return }
+            if (this.RegularKey == null) { return }
             if (this.checkForm() == false) { return } 
 
             const payload = {
