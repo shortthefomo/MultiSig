@@ -54,13 +54,9 @@
         methods: {
             async xAppListeners() {
                 const self = this
-                xapp.on('qr', async function (data) {
-                    console.log('look uuid', data.qrContents.split('/')[4])
-
-                    const x = await self.Sdk.payload.get(data.qrContents.split('/')[4])
-                    console.log('xxxx', x)
-
+                xapp.on('qr', async function (data) {                    
                     console.log('QR scanned / cancelled', data)
+                    console.log('uuid', data.qrContents.split('/')[4])
 
                     xapp.openSignRequest({ 'uuid': data.qrContents.split('/')[4] })
                         .then(d => {
