@@ -87,7 +87,7 @@
         },
         computed: {
             masterKeyClass() {
-                if (this.regularKey) {
+                if (this.masterKey) {
                     return 'bg-dark text-white rounded-3 p-1 mb-1 me-2'
                 }
                 return 'bg-white rounded-3 p-1 mb-1 me-2'
