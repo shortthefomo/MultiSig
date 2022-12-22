@@ -11,7 +11,7 @@
                 <p>The XRP Ledger allows an account to authorize a secondary key pair, called a <em>regular key pair</em>, to sign future transactions. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your <em>account</em> and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively.</p>
                 <ol>
                     <li>create new account in xumm (full access)</li>
-                    <li><strong>after applying changes here</strong> change this account to read only</li>
+                    <li><strong>after assigning a key</strong> change this account to read only in xumm</li>
                 </ol>
                 <br/>
                 <p v-if="errors.length" class="text-danger">

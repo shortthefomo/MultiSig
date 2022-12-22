@@ -43,11 +43,6 @@
 
     <ModalSignerList :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="createSignerList" :hasSignerList="hasSignerList" @reloadData="reloadData"/>
     <ModalAssignRegularKey :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="assignRegularKey" @reloadData="reloadData"/>
-
-    <!-- <footer>
-        <p class="h1 text-center">{{ledger}}</p>
-        <p class="p-3 mb-2 bg-warning text-white">{{account}}</p>
-    </footer> -->
 </template>
 
 <script>
@@ -60,6 +55,7 @@
     export default {
         name: 'Landing',
         props: ['client', 'Sdk', 'nodetype'],
+        emits: ['isLoading'],
         components: {
             ModalSignerList,
             ModalAssignRegularKey
@@ -83,6 +79,7 @@
             await this.accountInfo()
             
             this.isLoading = false
+            this.$emit('isLoading', false)
         },
         computed: {
             regularKeyClass() {
