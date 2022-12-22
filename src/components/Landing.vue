@@ -122,7 +122,7 @@
                 if (this.masterKey == true) { 
                     console.log('exit 2', this.masterKey)
                     return false }
-                if (this.hasSignerList == false || this.regularKey == false) { 
+                if (this.hasSignerList == false && this.regularKey == false) { 
                     console.log('exit 3')
                     return false }
 
