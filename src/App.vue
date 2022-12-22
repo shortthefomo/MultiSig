@@ -59,7 +59,7 @@
         },
         methods: {
             isAppLoading(value) {
-                console.log('isAppLoading fired...')
+                console.log('isAppLoading fired...', value)
                 this.isLoading = value
             },
             async xAppListeners() {
