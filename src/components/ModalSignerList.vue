@@ -47,7 +47,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <!-- <button type="button" class="btn btn-secondary" @click="test">tesst</button> -->
-                <button v-if="hasSignerList" type="button" class="btn btn-secondary" @click="removeSignerList">Remove Signer List</button>
+                <button v-if="hasSignerList" type="button" class="btn btn-secondary" @click="removeSignerList">Remove List</button>
                 <button type="button" class="btn btn-green" @click="createSignerList">Apply List</button>
             </div>
             </div>
