@@ -60,7 +60,7 @@
         methods: {
             isAppLoading(value) {
                 this.isLoading = value
-            }
+            },
             async xAppListeners() {
                 const self = this
                 xapp.on('qr', async function (data) {                    
