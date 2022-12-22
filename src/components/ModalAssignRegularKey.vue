@@ -30,7 +30,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button v-if="hasSignerList || masterKey" type="button" class="btn btn-purple" @click="assignRegularKey(true)">Remove Key</button>
+                <button v-if="hasSignerList || masterKey" type="button" class="btn btn-secondary" @click="assignRegularKey(true)">Remove Key</button>
                 <button type="button" class="btn btn-purple" @click="assignRegularKey">Assign Key</button>
             </div>
             </div>
@@ -60,7 +60,7 @@ export default {
     methods: {
         async assignRegularKey(clearKey = false) {
             // https://xrpl.org/assign-a-regular-key-pair.html
-            if (this.RegularKey == null) { return }
+            if (!clearKey && this.RegularKey == null) { return }
             if (this.checkForm() == false) { return } 
 
             const payload = {
