@@ -48,7 +48,7 @@
     </div>
 
     <ModalSignerList :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="createSignerList" :hasSignerList="hasSignerList" @reloadData="reloadData"/>
-    <ModalAssignRegularKey :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="assignRegularKey" @reloadData="reloadData"/>
+    <ModalAssignRegularKey :client="client" :Sdk="Sdk" :nodetype="nodetype" identity="assignRegularKey" masterKey="masterKey" hasSignerList="hasSignerList" @reloadData="reloadData"/>
 </template>
 
 <script>

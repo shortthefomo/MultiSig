@@ -30,6 +30,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button v-if="hasSignerList || masterKey" type="button" class="btn btn-purple" @click="assignRegularKey(true)">Remove Key</button>
                 <button type="button" class="btn btn-purple" @click="assignRegularKey">Assign Key</button>
             </div>
             </div>
@@ -44,7 +45,7 @@ import { Modal } from 'bootstrap'
 
 export default {
     name: "Create Signer List",
-    props: ['client', 'Sdk', 'nodetype', 'identity'],
+    props: ['client', 'Sdk', 'nodetype', 'identity', 'masterKey', 'hasSignerList'],
     emits: ['reloadData'],
     data() {
         return {
@@ -57,7 +58,7 @@ export default {
         this.modal = new Modal(this.$refs[this.identity + 'Modal'])
     },
     methods: {
-        async assignRegularKey() {
+        async assignRegularKey(clearKey = false) {
             // https://xrpl.org/assign-a-regular-key-pair.html
             if (this.RegularKey == null) { return }
             if (this.checkForm() == false) { return } 
@@ -65,8 +66,11 @@ export default {
             const payload = {
                 TransactionType: 'SetRegularKey',
                 Account: this.$store.getters.getAccount,
-                RegularKey: this.RegularKey,
             }
+            if (!clearKey) {
+                payload[RegularKey] = this.RegularKey
+            }
+            
             console.log('payload', payload)
             const request  = { txjson: payload }
             console.log('request', request)
