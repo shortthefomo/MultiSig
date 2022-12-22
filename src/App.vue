@@ -44,7 +44,7 @@
                 pong: false,
                 client: null,
                 signedIn: false,
-                isLoading: false
+                isLoading: true
             }
         },
         async mounted() {
