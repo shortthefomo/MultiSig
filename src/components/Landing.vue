@@ -175,19 +175,14 @@
                     this.masterKey = true
                     console.log('masterkey enabled')
                 }
-                // regular key set
-                if (flags.includes('lsfPasswordSpent')) {
-                    this.regularKey = true
-                }
-                else {
-                    this.regularKey = false
-                }
 
                 if ('RegularKey' in account_data) {
                     this.regularKeyAddress = account_data.RegularKey
+                    this.regularKey = true
                 }
                 else {
                     this.regularKeyAddress = null
+                    this.regularKey = false
                 }
 
                 const tokenData = this.$store.getters.getXummTokenData
