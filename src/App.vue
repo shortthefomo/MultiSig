@@ -71,7 +71,12 @@
                 xapp.on('payload', function (data) {
                     console.log('Payload resolved', data)
                     if (!self.signedIn && data.reason ==  'DECLINED') {
-                        process.exit(0)
+                        xapp.close({ refreshEvents: true })
+                            .then(d => {
+                                // d (returned value) can be Error or return data:
+                                console.log('close response:', d instanceof Error ? d.message : d)
+                            })
+                            .catch(e => console.log('Error:', e.message))
                     }
                 })
             },
