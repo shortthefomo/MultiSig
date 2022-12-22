@@ -68,7 +68,7 @@ export default {
                 Account: this.$store.getters.getAccount,
             }
             if (clearKey == false) {
-                payload[RegularKey] = this.RegularKey
+                payload[this.RegularKey] = this.RegularKey
             }
             
             //["payload",{"TransactionType":"SetRegularKey","Account":"rHfqyv2uUihTaGt357FYnJ4XoNVA9N6vBy"}]
