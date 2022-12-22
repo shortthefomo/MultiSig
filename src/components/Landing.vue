@@ -20,7 +20,7 @@
                 <small class="text-wrap">{{regularKeyAddress}}</small>
             </p>
             <div class="col-md-8 fs-4 mb-5">  
-                <p class="text-muted text-end fs-6"><span class="fancy-font">siglists</span>  by three</p>
+                <p class="text-muted text-end fs-6"><span class="fancy-font">multisig</span>  by three</p>
             </div>
             <p> 
                 <button v-if="canRemoveMaster()" type="button" class="btn btn-secondary mb-2" @click="removeMasterKey">Remove Master Key</button>
