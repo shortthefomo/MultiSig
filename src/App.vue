@@ -5,7 +5,7 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <Landing v-if="components.Landing && !isLoading" :client="client" :Sdk="Sdk" :nodetype="nodetype" @isLoading="isAppLoading">{MultiSig Landing}</Landing>
+        <Landing v-if="!isLoading" :client="client" :Sdk="Sdk" :nodetype="nodetype" @isLoading="isAppLoading">{MultiSig Landing}</Landing>
     </header>
 
     <main class="container flex-shrink-0 mb-4">
@@ -42,19 +42,14 @@
                 timeout_socket: null,
                 reconnect_socket: 0,
                 pong: false,
-                components: {
-                    Landing: false
-                },
                 client: null,
                 signedIn: false,
                 isLoading: false
             }
         },
         async mounted() {
-            if (this.components.Landing) { return }
             
             await this.jwtFlow()
-            this.components.Landing = true
             this.xAppListeners()
         },
         methods: {
