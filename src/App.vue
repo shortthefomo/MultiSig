@@ -47,7 +47,7 @@
                 },
                 client: null,
                 signedIn: false,
-                isLoading: true
+                isLoading: false
             }
         },
         async mounted() {
@@ -59,6 +59,7 @@
         },
         methods: {
             isAppLoading(value) {
+                console.log('isAppLoading fired...')
                 this.isLoading = value
             },
             async xAppListeners() {
