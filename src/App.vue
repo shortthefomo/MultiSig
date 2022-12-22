@@ -5,7 +5,7 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <Landing v-if="!isLoading" :client="client" :Sdk="Sdk" :nodetype="nodetype" @isLoading="isAppLoading">{MultiSig Landing}</Landing>
+        <Landing v-if="!isLoading" :client="client" :Sdk="Sdk" :nodetype="nodetype">{MultiSig Landing}</Landing>
     </header>
 
     <main class="container flex-shrink-0 mb-4">
@@ -53,10 +53,6 @@
             this.xAppListeners()
         },
         methods: {
-            isAppLoading(value) {
-                console.log('isAppLoading fired...', value)
-                this.isLoading = value
-            },
             async xAppListeners() {
                 const self = this
                 xapp.on('qr', async function (data) {                    
@@ -153,6 +149,7 @@
                             .then(d => {
                                 // d (returned value) can be Error or return data:
                                 console.log('close response:', d instanceof Error ? d.message : d)
+                                self.isLoading = false
                             })
                             .catch(e => console.log('Error:', e.message))
                         return false
