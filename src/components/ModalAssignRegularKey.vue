@@ -61,7 +61,7 @@ export default {
         async assignRegularKey(clearKey = false) {
             // https://xrpl.org/assign-a-regular-key-pair.html
             if (!clearKey && this.RegularKey == null) { return }
-            if (this.checkForm() == false) { return } 
+            if (!clearKey && this.checkForm() == false) { return } 
 
             const payload = {
                 TransactionType: 'SetRegularKey',
