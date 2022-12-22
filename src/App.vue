@@ -140,6 +140,7 @@
                         self.$store.dispatch('setUserToken', event.data.payload_uuidv4)
                         await self.connectWebsocket()
                         await self.getStoreage()
+                        self.isLoading = false
                         return event.data
                     }
 
@@ -149,7 +150,6 @@
                             .then(d => {
                                 // d (returned value) can be Error or return data:
                                 console.log('close response:', d instanceof Error ? d.message : d)
-                                self.isLoading = false
                             })
                             .catch(e => console.log('Error:', e.message))
                         return false
