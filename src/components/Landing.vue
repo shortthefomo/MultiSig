@@ -20,8 +20,8 @@
                 <p class="text-muted text-end fs-6"><span class="fancy-font">siglists</span>  by three</p>
             </div>
             <p>
-                <button v-if="masterKey && (hasSignerList || regularKey)" type="button" class="btn btn-secondary mb-2" @click="removeMasterKey">Remove Master Key</button>
-                <button v-else-if="!masterKey" type="button" class="btn btn-secondary mb-2" @click="restoreMasterKey">Restore Master Key</button>
+                <button v-if="accountAccess == 'FULL' && masterKey && (hasSignerList || regularKey)" type="button" class="btn btn-secondary mb-2" @click="removeMasterKey">Remove Master Key</button>
+                <button v-else-if="accountAccess != 'FULL' && !masterKey" type="button" class="btn btn-secondary mb-2" @click="restoreMasterKey">Restore Master Key</button>
                 <button v-if="!hasSignerList" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Create Signer List</button>
                 <button v-else-if="hasSignerList" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Edit Signer List</button>
                 <button type="button" class="btn btn-purple mb-2 me-2" data-bs-toggle="modal" data-bs-target="#assignRegularKey">Assign Regular Key</button>
@@ -151,7 +151,7 @@
                 }
 
                 const tokenData = this.$store.getters.getXummTokenData
-                console.log('tokenData', tokenData)
+                this.accountAccess = tokenData.accountaccess
             },
             async editSignerList(SignerListID) {
                 console.log('TODO -> editSignerList', SignerListID)
