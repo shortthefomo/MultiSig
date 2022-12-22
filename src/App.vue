@@ -70,6 +70,9 @@
 
                 xapp.on('payload', function (data) {
                     console.log('Payload resolved', data)
+                    if (!self.signedIn && data.reason ==  'DECLINED') {
+                        process.exit(0)
+                    }
                 })
             },
             async openScan() {
