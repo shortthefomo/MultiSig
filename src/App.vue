@@ -5,13 +5,13 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div> -->
-        <Landing v-if="isLoading == false" :client="client" :Sdk="Sdk" :nodetype="nodetype">{MultiSig Landing}</Landing>
+        <Landing v-if="isLoading == false && signedIn" :client="client" :Sdk="Sdk" :nodetype="nodetype">{MultiSig Landing}</Landing>
     </header>
 
     <main class="container flex-shrink-0 mb-4">
     </main>
 
-    <footer  v-if="isLoading == false" class="container bg-black footer position-absolute bottom-0 start-50 translate-middle-x text-center">
+    <footer  v-if="isLoading == false && signedIn" class="container bg-black footer position-absolute bottom-0 start-50 translate-middle-x text-center">
         <span class="text-light fancy-font position-absolute bottom-0 start-0 ms-2 mb-4">scan qr code -> </span>
         <button @click="openScan" class="btn btn-default mt-2 mb-4" role="button" id="open-sign">
             <img src="/apple-touch-icon.png" class="border border-1 rounded-3" alt="open sign" width="55" />
