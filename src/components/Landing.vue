@@ -21,8 +21,8 @@
             </div>
             <p> 
                 <span>{{accountAccess}}</span>
-                <button v-if="accountAccess == 'FULL' && masterKey && (hasSignerList || regularKey)" type="button" class="btn btn-secondary mb-2" @click="removeMasterKey">Remove Master Key</button>
-                <button v-else-if="accountAccess != 'FULL' && !masterKey" type="button" class="btn btn-secondary mb-2" @click="restoreMasterKey">Restore Master Key</button>
+                <button v-if="canRemoveMaster()" type="button" class="btn btn-secondary mb-2" @click="removeMasterKey">Remove Master Key</button>
+                <button v-else-if="canRestorMaster()" type="button" class="btn btn-secondary mb-2" @click="restoreMasterKey">Restore Master Key</button>
                 <button v-if="!hasSignerList" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Create Signer List</button>
                 <button v-else-if="hasSignerList" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Edit Signer List</button>
                 <button type="button" class="btn btn-purple mb-2 me-2" data-bs-toggle="modal" data-bs-target="#assignRegularKey">Assign Regular Key</button>
@@ -116,6 +116,21 @@
             }
         },
         methods: {
+            canRemoveMaster() {
+                if (this.accountAccess !== 'FULL') { return false } 
+                if (!this.masterKey) { return false } 
+                if (!this.hasSignerList && this.regularKey) { return false } 
+
+                // all conditions met
+                return true
+            },
+            canRestorMaster() {
+                if (this.accountAccess === 'FULL') { return false } 
+                if (this.masterKey) { return false } 
+
+                // all conditions met
+                return true
+            },
             async reloadData() {
                 console.log('reloading... DATA')
                 this.hasSignerList = await this.signerList()
