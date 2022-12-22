@@ -7,6 +7,7 @@
                 <span :class="signerListClass"><i class="bi bi-list-check"></i></span>
                 <span :class="regularKeyClass"><i class="bi bi-link"></i></span>
                 <span v-if="accountAccess" class="bg-dark text-white rounded-3 p-1 mb-1 me-2"><i class="bi bi-pencil-fill"></i></span>
+                <span v-if="!accountAccess" class="bg-dark text-white rounded-3 p-1 mb-1 me-2"><i class="bi bi-sunglasses"></i></span>
             </div>
             <p class="p-2 mb-2 bg-warning">
                 <small class="text-wrap">{{account}}</small>
