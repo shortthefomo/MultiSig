@@ -20,7 +20,6 @@
                 <p class="text-muted text-end fs-6"><span class="fancy-font">siglists</span>  by three</p>
             </div>
             <p> 
-                <span>{{accountAccess}}</span>
                 <button v-if="canRemoveMaster()" type="button" class="btn btn-secondary mb-2" @click="removeMasterKey">Remove Master Key</button>
                 <button v-else-if="canRestorMaster()" type="button" class="btn btn-secondary mb-2" @click="restoreMasterKey">Restore Master Key</button>
                 <button v-if="!hasSignerList" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Create Signer List</button>
@@ -117,9 +116,15 @@
         },
         methods: {
             canRemoveMaster() {
-                if (this.accountAccess !== 'FULL') { return false } 
-                if (!this.masterKey) { return false } 
-                if (!this.hasSignerList && this.regularKey) { return false } 
+                if (this.accountAccess !== 'FULL') { 
+                    console.log('exit 1')
+                    return false } 
+                if (!this.masterKey) { 
+                    console.log('exit 2')
+                    return false }
+                if (!this.hasSignerList && this.regularKey) { 
+                    console.log('exit 3')
+                    return false }
 
                 // all conditions met
                 return true
