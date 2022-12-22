@@ -70,14 +70,6 @@
 
                 xapp.on('payload', function (data) {
                     console.log('Payload resolved', data)
-                    if (!self.signedIn && data.reason ==  'DECLINED') {
-                        xapp.close({ refreshEvents: true })
-                            .then(d => {
-                                // d (returned value) can be Error or return data:
-                                console.log('close response:', d instanceof Error ? d.message : d)
-                            })
-                            .catch(e => console.log('Error:', e.message))
-                    }
                 })
             },
             async openScan() {
@@ -154,6 +146,7 @@
 
                     if (event.data.signed === false) {
                         console.log('The sign request was rejected :(')
+                        console.log('close xApp!')
                         xapp.close({ refreshEvents: true })
                             .then(d => {
                                 // d (returned value) can be Error or return data:
