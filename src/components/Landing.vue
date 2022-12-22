@@ -212,7 +212,7 @@
 
                     if (event.data.signed === true) {
                         console.log('Woohoo! The sign request was signed :)')
-                        self.reloadData()
+                        await self.reloadData()
                         return event.data
                     }
 
@@ -255,7 +255,7 @@
 
                     if (event.data.signed === true) {
                         console.log('Woohoo! The sign request was signed :)')
-                        self.reloadData()
+                        await self.reloadData()
                         return event.data
                     }
 
