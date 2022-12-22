@@ -120,7 +120,7 @@
                     console.log('exit 1')
                     return false } 
                 if (this.masterKey == false) { 
-                    console.log('exit 2')
+                    console.log('exit 2', this.masterKey)
                     return false }
                 if (this.hasSignerList == false || this.regularKey == false) { 
                     console.log('exit 3')
