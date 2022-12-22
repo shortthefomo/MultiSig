@@ -3,8 +3,8 @@
         <div class="container-fluid py-3">
             <p class="h1 text-start">{{ledger}}</p>
             <div class="col-md-8 fs-4 mb-3">
-                <span :class="signerListClass"><i class="bi bi-list-check"></i></span>
                 <span :class="masterKeyClass"><i class="bi bi-key-fill"></i></span>
+                <span :class="signerListClass"><i class="bi bi-list-check"></i></span>
                 <span :class="regularKeyClass"><i class="bi bi-link"></i></span>
             </div>
             <p class="p-2 mb-2 bg-warning">
@@ -126,7 +126,7 @@
                 if (this.accountAccess !== 'FULL') { 
                     // console.log('exit 1')
                     return false } 
-                if (this.masterKey == true) { 
+                if (this.masterKey == false) { 
                     // console.log('exit 2', this.masterKey)
                     return false }
                 if (this.hasSignerList == false && this.regularKey == false) { 
@@ -138,7 +138,7 @@
             },
             canRestorMaster() {
                 if (this.accountAccess === 'FULL') { return false } 
-                if (this.masterKey == false) { return false } 
+                if (this.masterKey == true) { return false } 
 
                 // all conditions met
                 return true
