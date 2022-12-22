@@ -55,7 +55,6 @@
     export default {
         name: 'Landing',
         props: ['client', 'Sdk', 'nodetype'],
-        emits: ['isLoading'],
         components: {
             ModalSignerList,
             ModalAssignRegularKey
@@ -79,7 +78,6 @@
             await this.accountInfo()
             
             this.isLoading = false
-            this.$emit('isLoading', false)
         },
         computed: {
             regularKeyClass() {
