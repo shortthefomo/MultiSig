@@ -71,7 +71,8 @@
                 signerLists: [],
                 selectedRows: [],
                 ascending: false,
-                regularKeyAddress: null
+                regularKeyAddress: null,
+                accountAccess: 'FULL'
             }
         },
         async mounted() {
@@ -148,6 +149,9 @@
                 if ('RegularKey' in account_data) {
                     this.regularKeyAddress = account_data.RegularKey
                 }
+
+                const tokenData = this.$store.getters.getXummTokenData
+                console.log('tokenData', tokenData)
             },
             async editSignerList(SignerListID) {
                 console.log('TODO -> editSignerList', SignerListID)
