@@ -87,19 +87,19 @@
         },
         computed: {
             masterKeyClass() {
-                if (this.masterKey) {
+                if (this.masterKey == false) {
                     return 'bg-pink text-white rounded-3 p-1 mb-1 me-2'
                 }
                 return 'bg-white rounded-3 p-1 mb-1 me-2'
             },
             regularKeyClass() {
-                if (this.regularKey) {
+                if (this.regularKey == true) {
                     return 'bg-dark text-white rounded-3 p-1 mb-1 me-2'
                 }
                 return 'bg-white rounded-3 p-1 mb-1 me-2'
             },
             signerListClass() {
-                if (this.hasSignerList) {
+                if (this.hasSignerList == true) {
                     return 'bg-dark text-white rounded-3 p-1 mb-1 me-2'
                 }
                 return 'bg-white rounded-3 p-1 mb-1 me-2'
