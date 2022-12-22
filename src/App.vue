@@ -5,7 +5,7 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <Landing v-if="components.Landing && !isLoading" :client="client" :Sdk="Sdk" :nodetype="nodetype" @isLoading="isLoading">{MultiSig Landing}</Landing>
+        <Landing v-if="components.Landing && !isLoading" :client="client" :Sdk="Sdk" :nodetype="nodetype" @isLoading="isAppLoading">{MultiSig Landing}</Landing>
     </header>
 
     <main class="container flex-shrink-0 mb-4">
@@ -58,6 +58,9 @@
             this.xAppListeners()
         },
         methods: {
+            isAppLoading(value) {
+                this.isLoading = value
+            }
             async xAppListeners() {
                 const self = this
                 xapp.on('qr', async function (data) {                    
