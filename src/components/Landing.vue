@@ -152,6 +152,7 @@
 
                 const tokenData = this.$store.getters.getXummTokenData
                 this.accountAccess = tokenData.accountaccess
+                console.log('this.accountAccess', this.accountAccess)
             },
             async editSignerList(SignerListID) {
                 console.log('TODO -> editSignerList', SignerListID)
