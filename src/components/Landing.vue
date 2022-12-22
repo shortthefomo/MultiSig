@@ -13,6 +13,10 @@
                     <i v-else class="master-key position-absolute top-0 start-0 h1 bi bi-patch-minus-fill text-dark"></i>
                 </sup>
             </p>
+            <p class="p-2 mb-2 bg-dark">
+                Regular Key<br/>
+                <small class="text-wrap">{{regularKeyAddress}}</small>
+            </p>
             <div class="col-md-8 fs-4 mb-5">  
                 <p class="text-muted text-end fs-6"><span class="fancy-font">siglists</span>  by three</p>
             </div>
@@ -67,7 +71,8 @@
                 isLoading: true,
                 signerLists: [],
                 selectedRows: [],
-                ascending: false
+                ascending: false,
+                regularKeyAddress: null
             }
         },
         async mounted() {
@@ -139,6 +144,10 @@
                 // regular key set
                 if (flags.includes('lsfPasswordSpent')) {
                     this.regularKey = true
+                }
+
+                if ('RegularKey' in account_data) {
+                    this.regularKeyAddress = account_data.RegularKey
                 }
             },
             async editSignerList(SignerListID) {
