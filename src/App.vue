@@ -1,10 +1,10 @@
 <template>
     <header class="container">
-        <div v-if="isLoading">
+        <!-- <div v-if="isLoading">
             <div class="spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
-        </div>
+        </div> -->
         <Landing v-if="!isLoading" :client="client" :Sdk="Sdk" :nodetype="nodetype">{MultiSig Landing}</Landing>
     </header>
 
