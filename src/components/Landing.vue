@@ -119,10 +119,10 @@
                 if (this.accountAccess !== 'FULL') { 
                     console.log('exit 1')
                     return false } 
-                if (!this.masterKey) { 
+                if (this.masterKey == false) { 
                     console.log('exit 2')
                     return false }
-                if (!this.hasSignerList && this.regularKey) { 
+                if (this.hasSignerList == false || this.regularKey == false) { 
                     console.log('exit 3')
                     return false }
 
@@ -160,7 +160,7 @@
                 // check if master key enabled.
                 if (flags.includes('lsfDisableMaster')) {
                     this.masterKey = false
-                    console.log('masterkey dissabled')
+                    console.log('masterkey disabled')
                 }
                 // regular key set
                 if (flags.includes('lsfPasswordSpent')) {
