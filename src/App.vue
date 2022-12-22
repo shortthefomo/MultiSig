@@ -140,6 +140,7 @@
                         self.$store.dispatch('setUserToken', event.data.payload_uuidv4)
                         await self.connectWebsocket()
                         await self.getStoreage()
+                        self.isLoading = false
                         return event.data
                     }
 
@@ -154,10 +155,9 @@
                         return false
                     }
                 })
-                if (subscription != false) {
-                    this.isLoading = false
-                }
-                console.log('subscription', subscription)
+                // if (subscription != false) {
+                //     this.isLoading = false
+                // }
 
                 xapp.openSignRequest({ uuid: subscription.created.uuid })
                     .then(d => {
