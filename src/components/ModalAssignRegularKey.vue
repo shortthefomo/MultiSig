@@ -30,7 +30,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button v-if="hasSignerList || masterKey" type="button" class="btn btn-secondary" @click="assignRegularKey(true)">Remove Key</button>
+                <button v-if="regularKey && (hasSignerList || masterKey)" type="button" class="btn btn-secondary" @click="assignRegularKey(true)">Remove Key</button>
                 <button type="button" class="btn btn-purple" @click="assignRegularKey(false)">Assign Key</button>
             </div>
             </div>
@@ -45,7 +45,7 @@ import { Modal } from 'bootstrap'
 
 export default {
     name: "Create Signer List",
-    props: ['client', 'Sdk', 'nodetype', 'identity', 'masterKey', 'hasSignerList'],
+    props: ['client', 'Sdk', 'nodetype', 'identity', 'masterKey', 'hasSignerList', 'regularKey'],
     emits: ['reloadData'],
     data() {
         return {
