@@ -119,7 +119,7 @@
                 if (this.accountAccess !== 'FULL') { 
                     console.log('exit 1')
                     return false } 
-                if (this.masterKey == false) { 
+                if (this.masterKey == true) { 
                     console.log('exit 2', this.masterKey)
                     return false }
                 if (this.hasSignerList == false || this.regularKey == false) { 
@@ -131,7 +131,7 @@
             },
             canRestorMaster() {
                 if (this.accountAccess === 'FULL') { return false } 
-                if (this.masterKey) { return false } 
+                if (this.masterKey == false) { return false } 
 
                 // all conditions met
                 return true
