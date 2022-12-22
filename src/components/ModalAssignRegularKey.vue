@@ -31,7 +31,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button v-if="hasSignerList || masterKey" type="button" class="btn btn-secondary" @click="assignRegularKey(true)">Remove Key</button>
-                <button type="button" class="btn btn-purple" @click="assignRegularKey">Assign Key</button>
+                <button type="button" class="btn btn-purple" @click="assignRegularKey(false)">Assign Key</button>
             </div>
             </div>
         </div>
@@ -60,17 +60,18 @@ export default {
     methods: {
         async assignRegularKey(clearKey = false) {
             // https://xrpl.org/assign-a-regular-key-pair.html
-            if (!clearKey && this.RegularKey == null) { return }
-            if (!clearKey && this.checkForm() == false) { return } 
+            if (clearKey == false && this.RegularKey == null) { return }
+            if (clearKey == false && this.checkForm() == false) { return } 
 
             const payload = {
                 TransactionType: 'SetRegularKey',
                 Account: this.$store.getters.getAccount,
             }
-            if (!clearKey) {
+            if (clearKey == false) {
                 payload[RegularKey] = this.RegularKey
             }
             
+            //["payload",{"TransactionType":"SetRegularKey","Account":"rHfqyv2uUihTaGt357FYnJ4XoNVA9N6vBy"}]
             console.log('payload', payload)
             const request  = { txjson: payload }
             console.log('request', request)
