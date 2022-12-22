@@ -13,9 +13,6 @@
                     <i v-else class="master-key position-absolute top-0 start-0 h1 bi bi-patch-minus-fill text-dark"></i>
                 </sup>
             </p>
-            <p class="p-2 mb-2">
-                <small>RegularKey</small>
-            </p>
             <p class="p-2 mb-2 bg-dark text-white">
                 <small class="text-wrap">{{regularKeyAddress}}</small>
             </p>
