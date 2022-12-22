@@ -387,6 +387,9 @@
         background-color: #00e56a;
         color: #ffffff;
     }
+    .bg-pink {
+        background-color: #ff1a8b;
+    }
     .bg-purple {
         background-color: #753ee2;
     }
