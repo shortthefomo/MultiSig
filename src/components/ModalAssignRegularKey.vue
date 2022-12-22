@@ -82,6 +82,7 @@ export default {
                 if (event.data.signed === true) {
                     console.log('Woohoo! The sign request was signed :)')
                     self.$emit('reloadData')
+                    self.modal.hide()
                     return event.data
                 }
 
