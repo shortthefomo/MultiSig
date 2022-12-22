@@ -172,7 +172,7 @@
                     console.log('masterkey disabled')
                 }
                 else {
-                    this.masterKey = false
+                    this.masterKey = true
                     console.log('masterkey enabled')
                 }
                 // regular key set
