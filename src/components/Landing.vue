@@ -17,10 +17,10 @@
                 <p class="text-muted text-end fs-6"><span class="fancy-font">siglists</span>  by three</p>
             </div>
             <p>
-                <button v-if="masterKey && signer_lists.length > 0" type="button" class="btn btn-secondary mb-2" @click="removeMasterKey" disabled>Remove Master Key</button>
-                <button v-else-if="signer_lists.length > 0" type="button" class="btn btn-secondary mb-2" @click="restoreMasterKey" disabled>Restore Master Key</button>
-                <button v-if="signer_lists.length == 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Create Signer List</button>
-                <button v-else-if="signer_lists.length > 0" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Edit Signer List</button>
+                <button v-if="masterKey && (hasSignerList || regularKey)" type="button" class="btn btn-secondary mb-2" @click="removeMasterKey">Remove Master Key</button>
+                <button v-else-if="!masterKey" type="button" class="btn btn-secondary mb-2" @click="restoreMasterKey">Restore Master Key</button>
+                <button v-if="!hasSignerList" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Create Signer List</button>
+                <button v-else-if="hasSignerList" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Edit Signer List</button>
                 <button type="button" class="btn btn-purple mb-2 me-2" data-bs-toggle="modal" data-bs-target="#assignRegularKey">Assign Regular Key</button>
             </p>
         </div>
@@ -188,7 +188,47 @@
                     .catch(e => console.log('Error:', e.message))
             },
             async restoreMasterKey() {
-                console.log('TODO -> restoreMasterKey')
+                console.log('restoreMasterKey')
+                const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
+                const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
+                const account_data = this.$store.getters.getAccountData
+
+                const asfDisableMaster = 4
+                const payload = {
+                    TransactionType: 'AccountSet',
+                    Account: this.$store.getters.getAccount,
+                    Fee: String(base_fee),
+                    Sequence: account_data.Sequence,
+                    ClearFlag: asfDisableMaster
+                }
+
+                console.log('payload', payload)
+                const request  = { txjson: payload }
+                console.log('request', request)
+
+                const self = this
+                const subscription = await this.Sdk.payload.createAndSubscribe(request, async event => {
+                    console.log('New payload event:', event.data)
+
+                    if (event.data.signed === true) {
+                        console.log('Woohoo! The sign request was signed :)')
+                        self.reloadData()
+                        return event.data
+                    }
+
+                    if (event.data.signed === false) {
+                        console.log('The sign request was rejected :(')
+                        return false
+                    }
+                })
+                console.log('setSignerList', subscription)
+
+                xapp.openSignRequest({ uuid: subscription.created.uuid })
+                    .then(d => {
+                        // d (returned value) can be Error or return data:
+                        console.log('openSignRequest response:', d instanceof Error ? d.message : d)
+                    })
+                    .catch(e => console.log('Error:', e.message))
             },
             async signerList(marker = undefined) {
                 this.$store.dispatch('clearSignerList')
