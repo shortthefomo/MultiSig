@@ -223,15 +223,11 @@ export default {
 
             this.quorum = this.quorum * 1
             const quorum = this.quorum
-            if (isNaN(quorum) || quorum < 1) {
+            if (isNaN(quorum)) {
                 this.errors.push('invalid quorum')
-                console.log('1', isNaN(quorum))
-                console.log('2', quorum < 1)
             }
-            else {
-                if (quorum < sum) {
-                    this.errors.push('quorum must be greater than or equal to all weights summed')
-                }
+            else if (quorum < 1 || quorum > sum) {
+                this.errors.push('quorum must be greater than 0 but less than or equal to all weights summed')
             }
             if (this.errors.length > 0) {
                 return false
