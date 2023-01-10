@@ -54,7 +54,6 @@
         },
         methods: {
             async xAppListeners() {
-                const self = this
                 xapp.on('qr', async function (data) {                    
                     console.log('QR scanned / cancelled', data)
                     console.log('uuid', data.qrContents.split('/')[4])
@@ -135,6 +134,10 @@
                     console.log('New payload event:', event.data)
 
                     if (event.data.signed === true) {
+                        const payload = await self.Sdk.payload.get(event.uuid)
+                        console.log('used alternate account to sign', payload.response.signer)
+                        self.$store.dispatch('setAccount', payload.response.signer)
+
                         console.log('Woohoo! The sign request was signed :)')
                         self.signedIn = true
                         self.$store.dispatch('setUserToken', event.data.payload_uuidv4)
