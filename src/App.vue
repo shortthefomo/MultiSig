@@ -51,7 +51,6 @@
             
             await this.jwtFlow()
             this.xAppListeners()
-            await this.getStoreage()
         },
         methods: {
             async xAppListeners() {
@@ -145,6 +144,7 @@
                         self.signedIn = true
                         self.$store.dispatch('setUserToken', event.data.payload_uuidv4)
                         await self.connectWebsocket()
+                        await self.getStoreage()
                         // self.isLoading = false
                         return event.data
                     }
