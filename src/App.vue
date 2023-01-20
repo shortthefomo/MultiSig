@@ -27,7 +27,7 @@
 
     const xapp = window.xAppSdk
 
-    import {XummSdkJwt} from 'xumm-sdk'
+    import { XummSdkJwt } from 'xumm-sdk'
 
     export default {
         components: {
