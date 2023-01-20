@@ -2,6 +2,10 @@
     <div class="p-2 mb-2 bg-light rounded-3">
         <div class="container-fluid py-3">
             <p class="h1 text-start">{{ledger}}</p>
+            <div class="alert alert-danger alert-dismissible fade show">
+                <strong>WARNING!</strong> This app changes what accounts can sign transactions on your account.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
             <div class="col-md-8 fs-4 mb-3">
                 <span :class="masterKeyClass"><i class="bi bi-key-fill"></i></span>
                 <span :class="signerListClass"><i class="bi bi-list-check"></i></span>
@@ -22,12 +26,7 @@
             <div class="col-md-8 fs-4 mb-5">  
                 <p class="text-muted text-end fs-6"><span class="fancy-font">multisig</span>  by three</p>
             </div>
-        </div>
-        <div class="alert alert-danger alert-dismissible fade show">
-            <strong>WARNING!</strong> This app changes what accounts can sign transactions on your account.
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-        
+        </div>        
         <p> 
             <button v-if="canRemoveMaster()" type="button" class="btn btn-secondary mb-2 ms-2" @click="removeMasterKey">Remove Master Key</button>
             <button v-else-if="canRestorMaster()" type="button" class="btn btn-secondary mb-2 ms-2" @click="restoreMasterKey">Restore Master Key</button>

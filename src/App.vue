@@ -82,6 +82,8 @@
                     
             },
             async getStoreage() {
+                console.log('getting store value')
+
 			    const storageGet = await this.Sdk.storage.get()
 			    console.log('storageGet', storageGet)
             },
