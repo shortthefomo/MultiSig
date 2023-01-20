@@ -135,8 +135,8 @@
 
                     if (event.data.signed === true) {
                         const payload = await self.Sdk.payload.get(event.uuid)
-                        console.log('used alternate account to sign', payload.response.signer)
-                        self.$store.dispatch('setAccount', payload.response.signer)
+                        // console.log('used alternate account to sign', payload.response.signer)
+                        // self.$store.dispatch('setAccount', payload.response.signer)
 
                         console.log('Woohoo! The sign request was signed :)')
                         self.signedIn = true
