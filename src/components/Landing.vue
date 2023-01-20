@@ -29,11 +29,11 @@
         </div>
         
         <p> 
-            <button v-if="canRemoveMaster()" type="button" class="btn btn-secondary mb-2" @click="removeMasterKey">Remove Master Key</button>
-            <button v-else-if="canRestorMaster()" type="button" class="btn btn-secondary mb-2" @click="restoreMasterKey">Restore Master Key</button>
-            <button v-if="!hasSignerList" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Create Signer List</button>
-            <button v-else-if="hasSignerList" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Edit Signer List</button>
-            <button type="button" class="btn btn-purple mb-2 me-2" data-bs-toggle="modal" data-bs-target="#assignRegularKey">Assign Regular Key</button>
+            <button v-if="canRemoveMaster()" type="button" class="btn btn-secondary mb-2" @click="removeMasterKey">Remove Master Key</button> <br/>
+            <button v-else-if="canRestorMaster()" type="button" class="btn btn-secondary mb-2" @click="restoreMasterKey">Restore Master Key</button> <br/>
+            <button v-if="!hasSignerList" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Create Signer List</button> <br/>
+            <button v-else-if="hasSignerList" type="button" class="btn btn-green mb-2 me-2" data-bs-toggle="modal" data-bs-target="#createSignerList">Edit Signer List</button> <br/>
+            <button type="button" class="btn btn-purple mb-2 me-2" data-bs-toggle="modal" data-bs-target="#assignRegularKey">Assign Regular Key</button> <br/>
         </p>
     </div>
     <div class="col-md-12">
