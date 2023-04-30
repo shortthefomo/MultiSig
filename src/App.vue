@@ -72,12 +72,13 @@
                 })
             },
             async openScan() {
-                xapp.scanQr()
-                    .then(d => {
-                        // d (returned value) can be Error or return data:
-                        console.log('scanQr response:', d instanceof Error ? d.message : d)
-                    })
-                    .catch(e => console.log('Error:', e.message))
+                xapp.openBrowser({ url: 'https://google.com' })
+                // xapp.scanQr()
+                //     .then(d => {
+                //         // d (returned value) can be Error or return data:
+                //         console.log('scanQr response:', d instanceof Error ? d.message : d)
+                //     })
+                //     .catch(e => console.log('Error:', e.message))
 
                     
             },
