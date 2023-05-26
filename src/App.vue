@@ -58,13 +58,13 @@
                     console.log('QR scanned / cancelled', data)
                     console.log('uuid', data.qrContents.split('/')[4])
 
-                    xapp.openSignRequest({ 'uuid': data.qrContents.split('/')[4] })
-                        .then(d => {
-                            // d (returned value) can be Error or return data:
-                            console.log('ELVIS SCANNED A QR CODE')
-                            console.log('openSignRequest response:', d instanceof Error ? d.message : d)
-                        })
-                        .catch(e => console.log('Error:', e.message))
+                    // xapp.openSignRequest({ 'uuid': data.qrContents.split('/')[4] })
+                    //     .then(d => {
+                    //         // d (returned value) can be Error or return data:
+                    //         console.log('ELVIS SCANNED A QR CODE')
+                    //         console.log('openSignRequest response:', d instanceof Error ? d.message : d)
+                    //     })
+                    //     .catch(e => console.log('Error:', e.message))
                 })
 
                 xapp.on('payload', function (data) {
@@ -72,6 +72,7 @@
                 })
             },
             async openScan() {
+                
                 xapp.scanQr()
                     .then(d => {
                         // d (returned value) can be Error or return data:
@@ -143,7 +144,7 @@
                         console.log('Woohoo! The sign request was signed :)')
                         self.signedIn = true
                         self.$store.dispatch('setUserToken', event.data.payload_uuidv4)
-                        await self.connectWebsocket()
+                        // await self.connectWebsocket()
                         await self.getStoreage()
                         // self.isLoading = false
                         return event.data
