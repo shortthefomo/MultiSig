@@ -6,16 +6,16 @@ import fs from 'fs'
 export default defineConfig({
   plugins: [vue()],
   server: {
-    https: {
-      key: fs.readFileSync('../../ssl/panicbot.xyz.key'),
-      cert: fs.readFileSync('../../ssl/panicbot_xyz.crt'),
-    },
+    // https: {
+    //   key: fs.readFileSync('../../ssl/panicbot.xyz.key'),
+    //   cert: fs.readFileSync('../../ssl/panicbot_xyz.crt'),
+    // },
     strictPort: true,
     port: 3010,
-    hmr: {
-      protocol: 'wss',
-      clientPort: 443
-    },
+    // hmr: {
+    //   protocol: 'wss',
+    //   clientPort: 443
+    // },
   },
   define: {
     'process.env': {}
