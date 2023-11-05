@@ -87,7 +87,7 @@ export default {
                 console.log('list', lists)
                 for (let index = 0; index < lists[0].SignerEntries.length; index++) {
                     const element = lists[0].SignerEntries[index]
-                    console.log('element', element)
+                    // console.log('element', element)
                     this.signerList.push({
                         address: element.SignerEntry.Account,
                         weight: element.SignerEntry.SignerWeight

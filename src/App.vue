@@ -22,7 +22,6 @@
 <script>
     import Refs from './components/Refs.vue'
     import Landing from './components/Landing.vue'
-    //import xapp from './plugins/xapp.js'
     import { XrplClient } from 'xrpl-client'
 
     const xapp = window.xAppSdk
