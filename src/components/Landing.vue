@@ -1,7 +1,7 @@
 <template>
     <div class="p-2 mb-2 bg-light rounded-3">
         <div class="container-fluid py-3">
-            <p class="h1 text-start">{{ledger}}</p>
+            <p class="h1 text-start">ledger index: {{ledger}}</p>
             <div class="alert alert-danger alert-dismissible fade show">
                 <strong>WARNING!</strong> This app changes what accounts can sign transactions on your account.
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
