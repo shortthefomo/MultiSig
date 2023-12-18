@@ -343,24 +343,24 @@
 				}
 
 				return bytes
-			}
-        },
-        async getFeeEstimate(txBlob) {
-            const signersCount = this.$store.getters.getSignersCount
-            if (this.client.endpoint === 'wss://xahau-test.net' || this.client.endpoint === 'wss://xahau.org' || this.client.endpoint === 'wss://xahau.network') {
-                const response = await this.client.request({
-                    command: 'fee',
-                    tx_blob: txBlob,
-                })
-                const openLedgerFee = response.result.drops.open_ledger_fee
-                const baseFee = new BigNumber(response.result.drops.base_fee)
-                const totalFee = BigNumber.sum(openLedgerFee, Number(baseFee) * signersCount)
-                return new BigNumber(totalFee.toFixed(6)).toString(10)
-            }
+			},
+            async getFeeEstimate(txBlob) {
+                const signersCount = this.$store.getters.getSignersCount
+                if (this.client.endpoint === 'wss://xahau-test.net' || this.client.endpoint === 'wss://xahau.org' || this.client.endpoint === 'wss://xahau.network') {
+                    const response = await this.client.request({
+                        command: 'fee',
+                        tx_blob: txBlob,
+                    })
+                    const openLedgerFee = response.result.drops.open_ledger_fee
+                    const baseFee = new BigNumber(response.result.drops.base_fee)
+                    const totalFee = BigNumber.sum(openLedgerFee, Number(baseFee) * signersCount)
+                    return new BigNumber(totalFee.toFixed(6)).toString(10)
+                }
 
-            const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
-            const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000 * signersCount
-            return String(base_fee)
+                const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
+                const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000 * signersCount
+                return String(base_fee)
+            }
         }
     }
 </script>
