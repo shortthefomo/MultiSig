@@ -58,8 +58,8 @@
   
 <script>
 const xapp = window.xAppSdk
-// import { Buffer } from 'buffer'
-// import { encode } from 'ripple-binary-codec'
+import { Buffer } from 'buffer'
+import { encode } from 'ripple-binary-codec'
 import { Modal } from 'bootstrap'
 import BigNumber from 'bignumber.js'
 
