@@ -56,7 +56,7 @@
 </template>
 
 <script>
-
+    import BigNumber from 'bignumber.js'
     import { flagNames } from 'flagnames'
     import ModalSignerList from './ModalSignerList.vue'
     import ModalAssignRegularKey from './ModalAssignRegularKey.vue'
@@ -203,18 +203,16 @@
             },
             async removeMasterKey() {
                 console.log('removeMasterKey')
-                const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
-                const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
                 const account_data = this.$store.getters.getAccountData
-
                 const asfDisableMaster = 4
                 const payload = {
                     TransactionType: 'AccountSet',
                     Account: this.$store.getters.getAccount,
-                    Fee: String(base_fee),
                     Sequence: account_data.Sequence,
                     SetFlag: asfDisableMaster
                 }
+
+                payload.Fee = await this.getFeeEstimate(payload)
 
                 console.log('payload', payload)
                 const request  = { txjson: payload }
@@ -246,18 +244,16 @@
             },
             async restoreMasterKey() {
                 console.log('restoreMasterKey')
-                const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
-                const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
                 const account_data = this.$store.getters.getAccountData
 
                 const asfDisableMaster = 4
                 const payload = {
                     TransactionType: 'AccountSet',
                     Account: this.$store.getters.getAccount,
-                    Fee: String(base_fee),
                     Sequence: account_data.Sequence,
                     ClearFlag: asfDisableMaster
                 }
+                payload.Fee = await this.getFeeEstimate(payload)
 
                 console.log('payload', payload)
                 const request  = { txjson: payload }
@@ -350,9 +346,22 @@
 				return bytes
 			}
         },
-        async getFeeEstimate() {
+        async getFeeEstimate(txBlob) {
+            const signersCount = this.$store.getters.getSignersCount
+            if (this.client.endpoint === 'wss://xahau-test.net' || this.client.endpoint === 'wss://xahau.org' || this.client.endpoint === 'wss://xahau.network') {
+                const response = await this.client.request({
+                    command: 'fee',
+                    tx_blob: txBlob,
+                })
+                const openLedgerFee = response.result.drops.open_ledger_fee
+                const baseFee = new BigNumber(response.result.drops.base_fee)
+                const totalFee = BigNumber.sum(openLedgerFee, Number(baseFee) * signersCount)
+                return new BigNumber(totalFee.toFixed(6)).toString(10)
+            }
+
             const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
-            const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
+            const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000 * signersCount
+            return String(base_fee)
         }
     }
 </script>

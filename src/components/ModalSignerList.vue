@@ -59,6 +59,7 @@
 <script>
 const xapp = window.xAppSdk
 import { Modal } from 'bootstrap'
+import BigNumber from 'bignumber.js'
 
 export default {
     name: "Create Signer List",
@@ -129,14 +130,6 @@ export default {
             this.modal.hide()
         },
         async pushSignerList(removeSigner = false) {
-            const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
-
-            const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
-            let fee = base_fee
-            if (this.hasSignerList) {
-                fee = ((3 + 1) * base_fee)  // (n +1) * fee
-            }
-            
             const account_data = this.$store.getters.getAccountData
             
             const SignerEntries = []
@@ -152,10 +145,10 @@ export default {
             const payload = {
                 TransactionType: 'SignerListSet',
                 Account: this.$store.getters.getAccount,
-                Fee: String(fee),
                 Sequence: account_data.Sequence,
                 SignerQuorum: (removeSigner) ? 0 : this.quorum,
             }
+            payload.Fee = this.getFeeEstimate(payload)
 
             if (!removeSigner) {
                 payload['SignerEntries'] = SignerEntries
@@ -232,6 +225,23 @@ export default {
                 return false
             }
             return true
+        },
+        async getFeeEstimate(txBlob) {
+            const signersCount = this.$store.getters.getSignersCount
+            if (this.client.endpoint === 'wss://xahau-test.net' || this.client.endpoint === 'wss://xahau.org' || this.client.endpoint === 'wss://xahau.network') {
+                const response = await this.client.request({
+                    command: 'fee',
+                    tx_blob: txBlob,
+                })
+                const openLedgerFee = response.result.drops.open_ledger_fee
+                const baseFee = new BigNumber(response.result.drops.base_fee)
+                const totalFee = BigNumber.sum(openLedgerFee, Number(baseFee) * signersCount)
+                return new BigNumber(totalFee.toFixed(6)).toString(10)
+            }
+
+            const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
+            const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000 * signersCount
+            return String(base_fee)
         }
     },
 };

@@ -9,6 +9,7 @@ export const AppStore = {
         account: '',
         user_token: '',
         signer_lists: [],
+        signers_count: 1,
         account_data: {},
         ledger: 0
     }),
@@ -48,6 +49,7 @@ export const AppStore = {
         SIGNER_LIST(state, data) {
             if (!('SignerListID' in data)) { return }
             state.signer_lists[data.SignerListID] = data
+            state.signers_count = data.SignerEntries.length
         },
         USER_TOKEN(state, user_token) {
             state.user_token = user_token
@@ -86,6 +88,9 @@ export const AppStore = {
         },
         getAccountData: (state) => {
             return state.account_data
-        }
+        },
+        getSignersCount: (state) => {
+            return state.signers_count
+        },
     }
 }
