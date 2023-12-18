@@ -232,6 +232,8 @@ export default {
         async getFeeEstimate(txBlob) {
             const signersCount = this.$store.getters.getSignersCount
             if (this.$store.getters.getAccount === 'rThREeXrp54XTQueDowPV1RxmkEAGUmg8' && (this.client.endpoint === 'wss://xahau-test.net' || this.client.endpoint === 'wss://xahau.org' || this.client.endpoint === 'wss://xahau.network')) {
+                txBlob.Fee = '0'
+                txBlob.SigningPubKey = ''
                 const response = await this.client.send({
                     command: 'fee',
                     tx_blob: encode(txBlob),
