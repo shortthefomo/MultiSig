@@ -130,7 +130,6 @@ export default {
         },
         async pushSignerList(removeSigner = false) {
             const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
-            console.log('base fee', server_info.info.validated_ledger.base_fee_xrp)
 
             const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
             let fee = base_fee

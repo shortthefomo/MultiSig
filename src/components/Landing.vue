@@ -90,6 +90,9 @@
             await this.accountInfo()
             
             this.isLoading = false
+
+            const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
+            console.log('server_info', server_info)
         },
         computed: {
             masterKeyClass() {
@@ -345,6 +348,10 @@
 				return bytes
 			}
         },
+        async getFeeEstimate() {
+            const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
+            const base_fee = server_info.info.validated_ledger.base_fee_xrp * 1_000_000
+        }
     }
 </script>
 
