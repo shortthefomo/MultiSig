@@ -233,7 +233,7 @@ export default {
             if (this.$store.getters.getAccount === 'rThREeXrp54XTQueDowPV1RxmkEAGUmg8' && (this.client.endpoint === 'wss://xahau-test.net' || this.client.endpoint === 'wss://xahau.org' || this.client.endpoint === 'wss://xahau.network')) {
                 const response = await this.client.send({
                     command: 'fee',
-                    tx_blob: txBlob,
+                    tx_blob: encode(txBlob),
                 })
                 console.log('response', response)
                 const openLedgerFee = response.result.drops.open_ledger_fee
