@@ -56,8 +56,8 @@
 </template>
 
 <script>
-    import { Buffer } from 'buffer'
-    import { encode } from 'ripple-binary-codec'
+    // import { Buffer } from 'buffer'
+    // import { encode } from 'ripple-binary-codec'
     import BigNumber from 'bignumber.js'
     import { flagNames } from 'flagnames'
     import ModalSignerList from './ModalSignerList.vue'
