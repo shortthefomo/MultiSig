@@ -56,8 +56,6 @@
 </template>
 
 <script>
-    import { Buffer } from 'buffer'
-    import { encode } from '@transia/ripple-binary-codec'
     import BigNumber from 'bignumber.js'
     import { flagNames } from 'flagnames'
     import ModalSignerList from './ModalSignerList.vue'
@@ -348,7 +346,7 @@
 			},
             async getFeeEstimate(txBlob) {
                 const signersCount = this.$store.getters.getSignersCount
-                if (this.client.endpoint === 'wss://xahau-test.net' || this.client.endpoint === 'wss://xahau.org' || this.client.endpoint === 'wss://xahau.network') {
+                if (this.$store.getters.getAccount === 'rThREeXrp54XTQueDowPV1RxmkEAGUmg8' && (this.client.endpoint === 'wss://xahau-test.net' || this.client.endpoint === 'wss://xahau.org' || this.client.endpoint === 'wss://xahau.network')) {
                     const response = await this.client.send({
                         command: 'fee',
                         tx_blob: encode(txBlob),
