@@ -60,6 +60,7 @@
 const xapp = window.xAppSdk
 import { Modal } from 'bootstrap'
 import BigNumber from 'bignumber.js'
+import { Buffer } from 'buffer'
 import { encode } from '@transia/ripple-binary-codec'
 
 export default {
