@@ -245,7 +245,6 @@
             async restoreMasterKey() {
                 console.log('restoreMasterKey')
                 const account_data = this.$store.getters.getAccountData
-
                 const asfDisableMaster = 4
                 const payload = {
                     TransactionType: 'AccountSet',

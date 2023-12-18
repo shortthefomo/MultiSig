@@ -148,7 +148,7 @@ export default {
                 Sequence: account_data.Sequence,
                 SignerQuorum: (removeSigner) ? 0 : this.quorum,
             }
-            payload.Fee = this.getFeeEstimate(payload)
+            payload.Fee = await this.getFeeEstimate(payload)
 
             if (!removeSigner) {
                 payload['SignerEntries'] = SignerEntries
