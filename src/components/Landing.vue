@@ -93,6 +93,8 @@
 
             const server_info = await this.client.send({'id': 1, 'command': 'server_info'})
             console.log('server_info', server_info)
+
+            console.log('this.client', this.client)
         },
         computed: {
             masterKeyClass() {
