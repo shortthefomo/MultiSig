@@ -60,6 +60,7 @@
 const xapp = window.xAppSdk
 import { Modal } from 'bootstrap'
 import BigNumber from 'bignumber.js'
+import { encode } from '@transia/ripple-binary-codec'
 
 export default {
     name: "Create Signer List",
@@ -231,7 +232,7 @@ export default {
             if (this.client.endpoint === 'wss://xahau-test.net' || this.client.endpoint === 'wss://xahau.org' || this.client.endpoint === 'wss://xahau.network') {
                 const response = await this.client.send({
                     command: 'fee',
-                    tx_blob: txBlob,
+                    tx_blob: encode(txBlob),
                 })
                 console.log('response', response)
                 const openLedgerFee = response.result.drops.open_ledger_fee
