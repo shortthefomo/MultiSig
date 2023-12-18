@@ -351,6 +351,7 @@
                         command: 'fee',
                         tx_blob: txBlob,
                     })
+                    console.log('response', response)
                     const openLedgerFee = response.result.drops.open_ledger_fee
                     const baseFee = new BigNumber(response.result.drops.base_fee)
                     const totalFee = BigNumber.sum(openLedgerFee, Number(baseFee) * signersCount)
